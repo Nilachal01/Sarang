@@ -39,8 +39,7 @@ namespace Sarang.Controllers
         Student student = new Student();
         CollegeEntities cg = new CollegeEntities();
         IGITEntities dc = new IGITEntities();
-        // GET: User
-
+        
         public ActionResult Index()
         {
            
