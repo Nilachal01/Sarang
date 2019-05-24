@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Jquery";
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<div class="container">
+    <form id="contact" action="" method="post">
+        <h4 class="text-info"><strong>Saving Form data in Multiple Tables in DB</strong></h4>
+        <fieldset>
+            <input placeholder="Your name" id="txtname" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Your Email Address" id="txtemail" type="email" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Your Phone Number" id="txtphone" type="tel" tabindex="3" required>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Colony" id="txtcolony" type="text" tabindex="4" required />
+        </fieldset>
+        <fieldset>
+            <input placeholder="State" id="txtstate" type="text" tabindex="4" required />
+        </fieldset>
+        <fieldset>
+            <select id="ddlcountry" required>
+                <option value="">-select country-</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="Jermany">Jermany</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <input placeholder="ItemName" id="txtitemname" type="text" tabindex="4" required />
+        </fieldset>
+        <fieldset>
+            <select id="ddlpaymentttype">
+                <option value="">-select-</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Net Banking">Net Banking</option>
+                <option value="Other">Other</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Price" id="txtprice" type="text" tabindex="4" required />
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="button" id="contact-submit">Submit</button>
+        </fieldset>
+        <p class="copyright">Designed by <a href="http://192.168.1.101:91/" target="_blank" title="mitechdev.com">Neel</a></p>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        
+        $("#contact-submit").click(function () {
+            var url = "/Test/SaveUser";
+            debugger;
+            var userdata = {
+                Name: $.trim($("#txtname").val()),
+                Email: $.trim($("#txtemail").val()),
+                PhoneNumber:$.trim($("#txtphone").val())
+            };
+            $.post(url, { UserData: userdata }, function (data) {
+                alert(data);
+                debugger;
+                if (data!=0 && data > 0) {
+                    var url = "Test/SaveAddress";
+                    var addressdata = {
+                        Colony: $.trim($("#txtcolony").val()),
+                        State: $.trim($("#txtstate").val()),
+                        Country: $.trim($("#ddlcountry").val()),
+                        Userid:data
+                    };
+                    $.post(url, { AddressData: addressdata }, function (response) {
+                        debugger;
+                        if (response == true) {
+                            var orderdata = {
+                                ItemName: $.trim($("#txtitemname").val()),
+                                PaymentType: $.trim($("#ddlpaymentttype").val()),
+                                Price: $.trim($("#txtprice").val()),
+                                Userid:response
+                            };
+                            $.post("@Url.Action("SaveOrders", "Test")", { OrdersData: orderdata }, function (result) {
+                                debugger;
+                                if (result == true) {
+                                    alert("Form data saved successfully in 3 tables");
+                                    resetForm();
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+    function resetForm() {
+        $("#txtname").val("");
+        $("#txtemail").val("");
+        $("#txtphone").val("");
+        $("#txtcolony").val("");
+        $("#txtstate").val("");
+        $("#ddlcountry").val("");
+        $("#txtitemname").val("");
+        $("#ddlpaymentttype").val("");
+        $("#txtprice").val("");
+    }
+</script>

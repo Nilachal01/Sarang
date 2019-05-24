@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Partialview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Partialview udit</h2>
+<div id="ViewDetail">
+
+</div>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function (){
+    
+    $.ajax({
+        url: "/User/Show",
+        method: 'GET',
+
+        success: function (data) {
+            
+            
+            $('#ViewDetail').html(data);
+           
+        },
+        error: function (data) { }
+    });
+});
+   
+</script>

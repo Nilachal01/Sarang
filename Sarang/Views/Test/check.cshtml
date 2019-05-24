@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>check</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <div> 
+        <input type="password" id="Password" class="form-control" />
+        <input type="checkbox" id="check"/>
+        
+    </div>
+
+    <script>
+        var $js = jQuery.noConflict();
+        $js(document).ready(function () {
+            $js('#check').change(function () {
+
+                if ($js(this).prop('checked') == true) {
+
+                    $js('#Password').attr('type', 'text');
+
+                } else {
+
+                    $js("#Password").attr('type', 'password');
+                }
+            });
+        });
+    </script>
+</body>
+
+
+</html>

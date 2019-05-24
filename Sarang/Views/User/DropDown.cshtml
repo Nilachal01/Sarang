@@ -1,0 +1,42 @@
+﻿@using (Html.BeginForm("DropDown", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container" style="margin-top:30px">
+
+
+        <div>
+            <select id="CountryId1" name="CountryName" class="form-control" onchange="return getstates();">
+                <option selected>---Select Country----</option>
+
+                @foreach (var item in ViewBag.Country)
+                {
+                    <option value="@item.CountryId">@item.CountryName</option>
+                }
+
+            </select>
+            <br />
+
+            <select class="form-control" id="StateId1" name="State">
+                <option value="">-----Select State--------</option>
+            </select>
+
+        </div>
+        </div>
+}
+        <script>
+            //$("#CountryId1").change(function () {
+            //    debugger
+
+            function getstates()
+            {
+                $.get("/User/GetStateList", { CountryId: $("#CountryId1").val() }, function (data) {
+                    $("#StateId1").empty();
+                    $.each(data, function (index, row) {
+                        $("#StateId1").append("<option value='" + row.StateId + "'>" + row.StateName + "</option>")
+                    });
+                });
+            }
+                
+            //});
+
+        </script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>

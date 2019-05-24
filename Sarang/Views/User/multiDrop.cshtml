@@ -1,0 +1,55 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <title>Multti search</title>
+    <link href="" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" rel="stylesheet" />
+   
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>*@
+</head>
+<body>
+    
+    <button class="btn btn-success" id="hello">hello</button>
+    <h3>MultiDropDown</h3>
+    @using (Html.BeginForm("multiDrop", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <select id="vegi" multiple="multiple" name="vegi">
+
+            @foreach (var item in ViewBag.Student)
+            {
+                <option value="@item.ID">@item.FirstName</option>
+            }
+                
+            
+            @*<option value="cheese">Cheese</option>
+            <option value="tomatoes">Tomatoes</option>
+            <option value="mozarella">Mozzarella</option>
+            <option value="mushrooms">Mushrooms</option>
+            <option value="pepperoni">Pepperoni</option>
+            <option value="onions">Onions</option>*@
+        </select>
+        <input type="submit" class="btn btn-success" />
+        <span id="msg_Error"></span>
+    }
+   
+
+
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            
+            $j('#vegi').multiselect(
+                {
+                    enableClickableOptGroups: true,
+                    enableCollapsibleOptGroups: true,
+                    enableFiltering: true,
+                    includeSelectAllOption: true
+                });
+    });
+    </script>
+</body>
+</html>

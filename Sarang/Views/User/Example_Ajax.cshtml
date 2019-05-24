@@ -1,0 +1,59 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Example_Ajax</title>
+</head>
+<body>
+    <center>
+        <h3 id="count" style="background-color:white"></h3>
+        <div>
+            <h3>
+                @Ajax.ActionLink("All", "All", "User", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divStudent", InsertionMode = InsertionMode.Replace, LoadingElementId = "loadImage", OnBegin = "ClearResult", OnSuccess = "CountRow" })
+                <span>|</span>
+                @Ajax.ActionLink("Top3", "Top3", "User", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divStudent", InsertionMode = InsertionMode.Replace, LoadingElementId = "loadImage", OnBegin = "ClearResult", OnSuccess = "CountRow" })
+                <span>|</span>
+                @Ajax.ActionLink("Buttom3", "Buttom3", "User", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divStudent", InsertionMode = InsertionMode.Replace, LoadingElementId = "loadImage", OnBegin = "ClearResult", OnSuccess = "CountRow" })
+                <span>|</span>
+                @Ajax.ActionLink("Pagination", "PageTable", "User", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divStudent", InsertionMode = InsertionMode.Replace, LoadingElementId = "loadImage", OnBegin = "ClearResult", OnSuccess = "CountRow" })
+
+            </h3>
+        </div>
+
+
+        <div id="loadImage" style="display:none">
+            <img src="~/Image/ajax-loader.gif"   style="height:200px;width:200px" />
+        </div>
+        <div id="divStudent"> hello world</div>
+    </center>
+
+    <script type="text/javascript">
+        function ClearResult()
+        {
+            $('#divStudent').empty();
+        }
+    </script>
+
+    <script type="text/javascript">
+        function CountRow()
+        {
+            var countrow = ($('#Tablediv tr').length - 1);
+            //alert(countrow);
+            $('#count').html("Total Number of rows:"+countrow);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿#navbar-collapse collapse ul li ul
+{
+    display:none;
+
+}
+#navbar-collapse collapse ul li:hover ul
+{
+    display:block;
+}

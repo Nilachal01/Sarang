@@ -1,0 +1,45 @@
+﻿<head>
+    <title>
+        Reset Password
+    </title>
+</head>
+<center>
+    <div style="background:linear-gradient(45deg, #008cc9,#009ea5);height:400px">
+        <h2 style="color:white"><b>Reset your Password</b></h2>
+        <div style="background-color:white;width:400px;height:200px" >
+            <fieldset >
+                @using (Html.BeginForm("mailverify", "User", FormMethod.Post))
+            {
+                    <table>
+                        <tr>
+                            <th>
+                                Reset Your Password
+                            </th>
+                            <td>
+                                <input style="visibility:hidden" name="ID" type="text" value="@ViewBag.ID" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Password
+                            </th>
+                            <td>
+                                <input type="password" name="pass" placeholder="Enter Your Password" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="padding-top:28px;">
+                                Confirm Password
+                            </th>
+                            <td>
+                                <input type="text" name="pass1" placeholder="Re-enter your password" class="form-control" style="margin-top:23px" />
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <input type="submit" value="Reset" class="btn btn-success" />
+                }
+            </fieldset>
+        </div>
+    </div>
+</center>

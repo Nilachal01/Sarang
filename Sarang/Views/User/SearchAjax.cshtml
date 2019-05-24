@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Sarang.Student>
+
+<link href="~/Content/jquery-ui.structure.min.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+@{
+    ViewBag.Title = "SearchAjax";
+
+}
+
+<script type="text/javascript">
+  
+
+    $(document).ready(function () {
+       
+        $("#Search").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/User/Ajaxsearch",
+                    type: "POST",
+                    dataType: "json",
+                    data: { 'Search': $('#Search').val() },
+                    success: function (data) {
+                        alert('data');
+                        $('#Search').html(data);
+                    }})
+
+                    }
+                })
+            });
+
+
+
+
+
+    @*$('#Search').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("Ajaxsearch", "User")',
+                dataType: "json",
+                data: { search: $('#Search').val() },
+                success: function (data) {
+                    response($.map(data, function (item) { }));
+                }
+
+            });
+        }
+
+    });*@
+        @*$('#Search').autocomplete({
+            source:function(request,response){
+                $.ajax({
+                    url:'@Url.Action("Ajaxsearch","User")',
+
+
+
+
+                });
+
+        });*@
+   
+</script>
+
+<h2>SearchAjax</h2>
+
+@using (Html.BeginForm())
+{
+    <input type="search" id="Search" name="Search" class="form-control" />
+    <input type="submit" value="Search" class="btn btn-success" />
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hash)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hash)
+        </td>
+        
+    </tr>
+}
+
+</table>

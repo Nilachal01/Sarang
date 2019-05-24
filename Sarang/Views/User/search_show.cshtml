@@ -1,0 +1,53 @@
+﻿
+<title>Search Details</title>
+
+<div style="background-color:white;">
+    @if (ViewBag.search != null)
+    {
+
+        <center>
+            <h2>serach_show</h2>
+            <table border="2" cellpadding="3px">
+                <tr>
+                    <th>ID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Date of Birth</th>
+                    <th>Login as User</th>
+                </tr>
+
+                @foreach (var item in ViewBag.search)
+                {
+                    <tr>
+                        <td>
+                            @item.ID
+                        </td>
+                        <td>
+                            @item.FirstName
+                        </td>
+                        <td>
+                            @item.LastName
+                        </td>
+                        <td>
+                            @item.DateOfBirth
+                        </td>
+                        <td>
+                            @Html.ActionLink("LogtoUser","LogtoUser", "User", new { id= item.ID }, new { @style = "color:#000aaa;" })
+                        </td>
+                    </tr>
+
+                }
+
+            </table>
+
+        </center>
+    }
+    else 
+    
+    {
+        <p>
+            Oops!! No record Found!!
+        </p>
+    }
+
+</div>

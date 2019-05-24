@@ -1,0 +1,43 @@
+								Mean Stack
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+			MongoDB
+---------------------------------------------------------
+1. Collection =>Table
+2. Document => Row
+3. Field => Column
+4. Create Database => use DatabseName i.e use mydb
+5. Insert OR Create => db.mycollection.insert({"Name":"Neel"})
+6. Drop Database =>dropDatabase()
+7. Drop Collection => db.mycollection.drop()
+8. where condition => db.mycollection.find({"Age": {$gte:"15"}) ///gte: => and lte: <=
+9. And condition => db.students.find({"FirstName":"Neel","Age":"21"})
+10. OR condition => db.student.find({$or:[{"FirstName":"Neel"},{"Age":"21"}] })
+11. And or condtion => db.student.find({"FirstName":"Neel",$or:[{"Age":"21"},{"Age":"23"}]})
+12. UPDATE => db.student.update({"ID":"2"},{$set:{"FirstName":"Nila"}},{multi:true})
+13. UPDATE =>db.student.save({"ID":"2","FirstName":"Nieel","Age":"21"})  /// we can manually edit here 
+14. Delete => db.student.remove({"Age":"21"}) ///Delete query where Age =21 OR bd.student.remove({"Age":"21"},1) //single delete
+15. Select Statement => db.student.find({},{"FirstName":1,"ID":0}) 
+16. Limit => db.student.find({},{"FirstName":1,"ID":0}).limit(5) ///take top 5 values
+17. Skip => db.student.find({},{"FirstName":1,"ID":0}).skip(2).limit(3) //Its skip top 2 rows then take remain top 3 rows 
+18. Sort => db.student.find({},{"FirstName":1,"ID":0}).sort({"FirstName": 1}) //1 for Acscending and -1 for descending order
+19. Add Column => db.myCollection.update({}, {$set: {"Roll Number": false}}, false, true)
+20. Show Databases => db
+21.Show collection => show collections
+
+			Angular 
+-----------------------------------------------------------------
+1.TypeScript is superset of javascript 
+2.Hero.ts => Typescript like model or class in mvc
+3. Hero.component.html => is like Partial view in mvc
+4.Hero.component.ts => is like controller in mvc
+5. app.component.html => is like main html page
+6.Decorator is a feature of typescript which attach additional information to class
+7.ngModel => used for bind the text value
+8.TypeScript is pure object oriented which uses class and interfaces
+
+
+			Node.js
+------------------------------------------------------------------
+1.www file contain node 

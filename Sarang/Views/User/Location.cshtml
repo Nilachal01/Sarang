@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Location";
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<h2>Location</h2>
+
+<table>
+    <tr>
+        <td>Latitude</td>
+        <td><input type="text" id="lat" class="form-control" /></td>
+    </tr>
+    <tr>
+        <td>Longitude</td>
+        <td><input type="text" id="long" class="form-control" /></td>
+    </tr>
+</table>
+<script>
+    $(function () {
+        debugger;
+        navigator.geolocation.getCurrentPosition(showPosition, PositionError);
+        function showPosition(position)
+        {
+            var cordinate = position.coords;
+            $('#lat').val(cordinate.latitude);
+            $('#long').val(cordinate.longitude);
+
+        }
+
+        function PositionError(position)
+        {
+            alert("Oops ! error" + position.code);
+        }
+
+    })
+</script>

@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+    @*<img src="~/Image/2.jpg"   />*@
+    
+    <link rel="shortcut icon" href="~/Models/Photo/2.jpg" type="image/x-icon" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @*<link rel="stylesheet" href="/resources/demos/style.css">*@
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>*@
+   
+     <script>
+         var $j = jQuery.noConflict();
+         var today = new Date();
+         $j(function(){
+             $j("#datepicker").datepicker({
+                 dateFormat: 'dd-mm-yy', changeYear: true, changeMonth: true,
+                 maxDate: today,
+                 minDate: '01-01-1987',
+                 yearRange: "-150:-8"
+
+             });
+         });
+    </script>
+    
+</head>
+<body style="background:url(../../Models/Photo/college4.jpg)center center fixed" @*oncontextmenu="return false;*@>
+
+    
+    <div>
+        <center>
+            <h2 style="color:white;background-color:blue;margin-top:60px;width:600px;box-shadow: 8px 8px 5px green;"><b>STUDENT REGISTRATION</b></h2>
+            <marquee style="background-color:gray; color:white;text-align:center;width:869px">Welcome to Convergent Technologies, Jharsa road, Gurgaon PIN- 751006</marquee><br />
+
+            <div style="background-image:url(../../Models/Photo/college5.jpg);box-shadow: 20px 20px 5px black; width: 500px; height:500px;opacity:0.8;filter:alpha(opacity=80); ">
+                <br />
+
+
+                @using (Html.BeginForm("Index", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <center>
+                        <table style="color:white">
+                            <tr style="height:70px">
+                                <th>First Name</th>
+                                <td><input type="text" name="FName" id="FName" class="form-control"  title="Only letter are allowed"  placeholder="Enter your First Name" onkeydown="upperCaseF(this)" required /></td>
+
+                            </tr>
+
+                            <tr style="height:70px">
+                                <th>Last Name</th>
+                                <td><input type="text" name="LName" id="LName" class="form-control" placeholder="Enter your Last Name" required  title="Only letter are allowed"  onkeydown="upperCaseF(this)" /></td>
+                            </tr>
+
+                            <tr style="height:70px">
+                                <th>EmailID</th>
+                                <td><input type="email" name="EmailIDs" id="EmailIDs" class="form-control" placeholder="Enter your EmailID" required onchange="Exist()" />
+                               <b><span style="color:white;background-color:blue">@ViewBag.Email</span></b>
+                                <span id="invalidEmail"></span>
+                                </td>
+                            </tr>
+
+                            <tr style="height:70px">
+                                <th>DOB</th>
+                                <td>
+                                <input type="text" name="DOB" id="datepicker" class="form-control" placeholder="Enter your Date of Birth" required onkeydown="upperCaseF(this)"/>
+                                </td>
+                            </tr>
+
+                            <tr style="height:70px">
+                                <th>Password</th>
+                                <td><input type="password" name="password" class="form-control" required placeholder="Enter your Password"  /></td>
+                            </tr>
+                        </table>
+                    </center>
+
+                    <input type="submit" onsubmit="checkvalid()" name="submit" value="Register" class="btn btn-success" /><br /><br />
+                    @Html.ActionLink("Already have an account", "Login", "User", new { Style = "color:White" })
+                }
+
+            </div>
+        </center>
+
+
+    </div>
+<script>
+    function Exist() {
+       
+        var EmailID = $("#EmailIDs").val();
+        $.get("/User/Exist", { Email: EmailID }, function (data) {
+            if(data==null)
+            {
+                var text = "";
+            }
+            var text = "Email Address already Exist";
+            document.getElementById('invalidEmail').innerHTML = text;
+            });
+        };
+    </script>
+   
+
+
+
+   
+    <script>
+        var $j = jQuery.noConflict();
+        $j(function () {
+            $j('#FName').keydown(function (e) {
+                if (e.shiftKey || e.ctrlKey || e.altKey) {
+                    e.preventDefault();
+                } else {
+                    var key = e.keyCode;
+                    if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        var $j = jQuery.noConflict();
+        $j(function () {
+            $j('#LName').keydown(function (e) {
+                if (e.shiftKey || e.ctrlKey || e.altKey) {
+                    e.preventDefault();
+                } else {
+                    var key = e.keyCode;
+                    if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+
+        function upperCaseF(a) {
+            setTimeout(function () {
+                a.value = a.value.toUpperCase();
+            }, 1);
+        }
+    </script>
+
+    @*@section Scripts {  
+  
+@Scripts.Render("~/bundles/jqueryui")  
+@Styles.Render("~/Content/cssjqryUi")  
+  
+  
+  
+}*@  
+
+</body>
+</html>

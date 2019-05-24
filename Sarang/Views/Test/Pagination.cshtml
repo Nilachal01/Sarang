@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pagination</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div id="check"> 
+        <table border="5">
+            @foreach (var item in ViewBag.data)
+            {
+                <tr>
+                    <th>
+                        @item.FirstName
+                    </th>
+                </tr>
+            }
+            
+        </table>
+        @Ajax.ActionLink("<<", "data",new {}, new AjaxOptions { UpdateTargetId = "check", InsertionMode = InsertionMode.Replace,OnBegin="CheckPage" })
+
+    </div>
+
+    <script>
+        function CheckPage()
+        {
+          var c = 10;
+           ++c;
+           $j.ajax({
+               url: "Test/data",
+               type: "POST",
+               dataType: "json",
+               data: { page: c },
+               success: function (data) {
+                   $('#check').html(data);
+               }
+           });
+
+        }
+    </script>
+</body>
+</html>

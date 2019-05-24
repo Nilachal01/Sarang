@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*<script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>*@
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <link rel="shortcut icon" href="~/Models/Photo/2.jpg" type="image/x-icon" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+  @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
+  
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>*@
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+   
+    @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+    
+  
+
+</head>
+<body style="background:url(../../Models/Photo/college4.jpg)center center fixed">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <img src="~/Models/Photo/2.jpg" height="50" width="50" />
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (Session["EmailID"]!=null)
+                {
+                    var mail = Session["EmailID"];
+                }
+                else
+                {
+                    var mail = "";
+                }
+
+                <ul class="nav navbar-nav" style="font-size:large">
+                    <li>@Html.ActionLink("INSTRUCTION", "Instruction", "User")</li>
+                    <li>@Html.ActionLink("REGISTRATION", "Index", "User")</li>
+                    <li>@Html.ActionLink("LOGIN", "Login", "User")</li>
+                    <li>@Html.ActionLink("CONTACT", "Contact", "User")</li>
+                    <li>@Html.ActionLink("ADMIN", "ADMIN", "User")</li>
+                    
+
+                    
+
+
+                </ul>
+                @using (Html.BeginForm("Login", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <input type="email" placeholder="Enter your Email Address" name="EmailID" id="EmailID" style="margin-top: 11px;margin-left:28px" required /> <input type="password" name="Password" placeholder="Enter youe Password" id="Password" style="margin-left:14px" required /> <input type="submit" class="btn btn-success" value="Login" style="padding:4px 12px;margin-left:10px" />
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        <hr />
+        </div>
+    
+
+            <div>
+
+                <footer style="background-color:black ;width:100%;height:100%;position:static">
+
+
+                    <style>
+                        img {
+                            max-width: 100%;
+                        }
+
+
+
+                        .fa {
+                            padding: 8px;
+                            font-size: 30px;
+                            width: 50px;
+                            text-align: center;
+                            text-decoration: none;
+                            margin: 5px 2px;
+                        }
+
+                            .fa:hover {
+                                opacity: 0.7;
+                            }
+
+                        .fa-facebook {
+                            background: #3B5998;
+                            color: white;
+                        }
+
+                        .fa-linkedin {
+                            background: #007bb5;
+                            color: white;
+                        }
+
+                        .fa-youtube {
+                            background: #bb0000;
+                            color: white;
+                        }
+
+                        .fa-twitter {
+                            background: #55ACEE;
+                            color: white;
+                        }
+
+                        .fa-instagram {
+                            background: #125688;
+                            color: white;
+                        }
+
+                        .fa-pinterest {
+                            background: #cb2027;
+                            color: white;
+                        }
+
+                        .fa-snapchat-ghost {
+                            background: #fffc00;
+                            color: white;
+                            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+                        }
+
+                        .fa-skype {
+                            background: #00aff0;
+                            color: white;
+                        }
+
+                        .fa-android {
+                            background: #a4c639;
+                            color: white;
+                        }
+
+                        .fa-dribbble {
+                            background: #ea4c89;
+                            color: white;
+                        }
+
+                        .fa-vimeo {
+                            background: #45bbff;
+                            color: white;
+                        }
+
+                        .fa-tumblr {
+                            background: #2c4762;
+                            color: white;
+                        }
+
+                        .fa-vine {
+                            background: #00b489;
+                            color: white;
+                        }
+
+                        .fa-foursquare {
+                            background: #45bbff;
+                            color: white;
+                        }
+
+                        .fa-stumbleupon {
+                            background: #eb4924;
+                            color: white;
+                        }
+
+                        .fa-flickr {
+                            background: #f40083;
+                            color: white;
+                        }
+
+                        .fa-yahoo {
+                            background: #430297;
+                            color: white;
+                        }
+
+                        .fa-soundcloud {
+                            background: #ff5500;
+                            color: white;
+                        }
+
+                        .fa-reddit {
+                            background: #ff5700;
+                            color: white;
+                        }
+
+                        .fa-rss {
+                            background: #ff6600;
+                            color: white;
+                        }
+
+                        .fa-soundcloud {
+                            color: red;
+                        }
+                    </style>
+
+
+                    <a href="https://www.facebook.com/Convergenttec/" class="fa fa-facebook"></a>
+                    <a href="https://in.linkedin.com/" class="fa fa-linkedin"></a>
+                    <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+                    <a href="https://twitter.com/convergenttec" class="fa fa-twitter"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                    <a href="https://www.pintrest.com/" class="fa fa-pinterest"></a>
+                    <a href="https://www.snapchat.com/" class="fa fa-snapchat-ghost"></a>
+                    <a href="https://www.skype.com/" class="fa fa-skype"></a>
+                    <a href="https://www.android.com/" class="fa fa-android"></a>
+                    <a href="https://www.dribble.com/" class="fa fa-dribbble"></a>
+                    <a href="https://www.vimeo.com/" class="fa fa-vimeo"></a>
+                    <a href="https://www.tumblr.com/" class="fa fa-tumblr"></a>
+                    <a href="https://www.vine.com/" class="fa fa-vine"></a>
+
+                    <a href="https://www.stumbleupon.com/" class="fa fa-stumbleupon"></a>
+                    <a href="https://www.flickr.com/" class="fa fa-flickr"></a>
+                    <a href="https://www.yahoo.com/" class="fa fa-yahoo"></a>
+                    <a href="https://www.reddit.com/" class="fa fa-reddit"></a>
+                    <a href="https://www.foursquare.com/" class="fa fa-foursquare"></a>
+                    <a href="https://www.rss.com/" class="fa fa-rss"></a>
+                    <a href="https://www.soundcloud.com/" class="fa fa-soundcloud"></a>
+                    <a href="https://www.dribbble.com/" class="fa fa-dribbble"></a>
+                    <a href="https://www.tumblr.com/" class="fa fa-tumblr"></a>
+                    <a href="https://www.reddit.com/" class="fa fa-reddit"></a>
+
+
+                    <p style="color:white;text-align:center"> &copy; @DateTime.Now.Year - Nilachal sethi &reg; All Rights reserves</p>
+
+              
+
+           
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

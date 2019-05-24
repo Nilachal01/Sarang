@@ -1,0 +1,163 @@
+﻿@model Sarang.Models.Contact
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3 style="visibility:hidden">Hidden content</h3>
+<style>
+    .TextArea {
+        width: 282px;
+        height: 500px;
+    }
+</style>
+
+
+<center>
+    <h2 style="color:white;background-color:blue;margin-top:60px;width:600px;box-shadow: 8px 8px 5px green;"><b>Contact Us</b></h2>
+    <div style="background:url(../../Models/Photo/college5.jpg);width:400px;height:450px; opacity:0.8;filter: alpha(opacity=80);">
+
+        @using (Html.BeginForm())
+        {
+
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal" style="margin-top:10px;margin-left:20px">
+
+                <div class="col-md-10" style="margin-top:54px">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Enter your Name " } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div><input type="text" style="visibility:hidden" /></div>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Enter your EmailID " } })
+                    @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                </div>
+
+                <div><input type="text" style="visibility:hidden" /></div>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Enter your Subject " } })
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                </div>
+
+                <div><input type="text" style="visibility:hidden" /></div>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Enter your Message " } })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div><input type="text" style="visibility:hidden" /></div>
+
+                <div class="col-md-10">
+
+                    <input type="submit" value="Send" class="btn btn-success" />
+
+                </div>
+            </div>
+        }
+    </div>
+    <input type="text" style="visibility:hidden" class="form-control input-lg " />
+
+    @*<div>
+        <div id="myMap" style="width:1100px;height:300px"></div>
+
+
+
+
+        <script>
+     function myMap() {
+  var mapCanvas = document.getElementById("map");
+  var myCenter = new google.maps.LatLng(28.4568, 77.0367);
+  var mapOptions = {center: myCenter, zoom: 17};
+  var map = new google.maps.Map(mapCanvas,mapOptions);
+  var marker = new google.maps.Marker({
+    position: myCenter,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker.setMap(map);
+}
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDasConAY9enCFgIQO1CcF90S1ICyoqb6A&callback=myMap"></script>
+
+    </div>*@
+
+</center>
+
+<input type="text" style="visibility:hidden" class="form-control input-lg" />
+
+<footer style="color:black">
+    <h1 style="visibility:hidden">Hidden content</h1>
+    <p style="background:url(../../Models/Photo/certificate_bg.jpg)no-repeat center center fixed;">
+        Indira Gandhi Institute of Technology (IGIT), Sarang was established in the year of 1982 and was managed directly by
+        the Govt. of Orissa in the name of Orissa College of Engineering (OCE). Prior to this, since 1981, the institute in the
+        name of Modern Polytechnic (MPT) was offering Diploma Courses in Civil, Electrical, Mechanical, Mining Survey Engineering.
+        In the year 1987, both OCE & MPT were merged and renamed as IGIT, Sarang and the management was transferred to an Autonomous
+        Society. Presently, the Institute is offering nine Under Graduate Engineering courses in Civil, Chemical, Electrical, Mechanical,
+        Metallurgical, Electronics & Telecommunication, Computer Science Engg., Production Engg., Architecture; & two part-time Post
+        Graduate Engg courses in Industrial Power Control & Drives, Environmental Sc. &Engg.; nine full time Post Graduate Engg courses / Master courseComputer Sc.Engg.,
+        Electronics and Telecom. Engg, GeotechEngg.,Mechanical System Design, Mett. & Materials Engg., Power Electronics & Drives,
+        Power System Engg., Production Engg., Structural Engg., Master in Computer Application; besides five Diploma Courses in Civil,
+        Electrical, Electronics & Telecommunication, Mechanical & Metallurgical Engineering.
+
+        The Institute is fully residential with an integrated campus covering 179 acres of land encompassing hostels, staff
+        quarters and a sprawling playground (Dr. M. P. Mishra memorial stadium) with basketball, volleyball and badminton
+        courts. In addition to this, with the Govt. approval, a proposal has been submitted to District authorities for
+        further alienation of 200 acres of Govt. land in front of the Institute for its further expansion. The institute
+        has central infrastructure facilities like Central Library (with 27,000 volumes of books and 50 current
+        periodicals / journals subscribed every year), Central Computer Centre, Central Workshop, Knowledge Centre,
+        8 nos. ofstudent hostels having accommodation facility for students and other amenities such as SBI
+        (Core Bank facilities), Guest house , Hospital, Post Office, Canteen, Students and Employees Cooperative Consumer
+        stores, NSS, NCC, different clubs, Telephone Exchange, Mobile tower and Schooling up to High School level in its campus.
+
+        There are eight departments, well equipped with highly qualified faculties and adequately equipped laboratories. The
+        research activities of the institute are comparable with any other leading institute of the State and the Country.
+        The faculties are well in touch with the advancement in modern technology around the world. Every year, numbers of
+        research papers are published in journals and Conferences of National and International repute. 15 nos. of Ph.DS have
+        so far been produced in different departments. Every year, National Conferences / Short term courses are organized in
+        the institute in collaboration with IE / ISTE / AICTE. People across the country and outside also are in touch with our
+        faculties in connection with technical research and consultancy. Quite a good nos. of our alumni are excelling in their
+        field across the world.
+
+        Within a span of three decades, the institute has grown up to the National level academically. This is the first Govt. Engg.
+        College in the state to have accreditation from NBA (AICTE) because of its academic excellence.
+
+        The serene atmosphere available at Sarang offers the students optimum opportunity to concentrate on studies. Priority
+        is given through routine curricular programmes towards improvement of practical knowledge. In order to provide complete
+        exposure to industrial life, the students are taken to nearby industrial organisations such as NALCO, N.T.P.C./T.T.P.S.,
+        M.C.L., N.T.P.C., Rengali Dam Project, Samal Barrage, Heavy Water Project, Bhusan Steel & Strips, Rana Sponge, Nav Bharat
+        Ferro Alloys Jindal Steel & Powers Ltd., etc., on weekends and holidays. Industrial visits for the students are also arranged
+        to places of industrial importance such as Rourkela, Kansbahal, Sunabeda, Burla, Hirakud, Paradeep and Industrial Estate, Bhubaneswar etc.
+        Every effort is beingmade to improve various dimensions of students personalities by conducting regular cultural programmes,
+        technical exercises, athletic, sport and games and other co-curricular activities. made to improve various dimensions of students
+        personalities by conducting regular cultural programmes, technical exercises, athletic, sport and games and other co-curricular activities.
+
+        Campus selection of students are being conducted regularly by reputed firms like INFOSYS, Tata Consultancy Services, Larsen & Turbo Ltd.
+        (Information Technology), defence services and Tata Refractories Ltd., Vedanta Alumina, Bhusan Steel & Strips Ltd., Satyam Computer,
+        Kanbay, Wipro, MatasSritech, Tari Harish, I-Flex Solution, Utkal Alumina, Visa Steel , Ananda Auto etc.
+    </p>
+
+    <address style="background:url(../../Models/Photo/college5.jpg);width:1300px;color:white;opacity:0.8;filter:alpha(opacity=80);">
+
+        <h1 style="visibility:hidden">Hidden</h1>
+        <h2 style="color:white"><b>Contact:</b></h2>
+
+        <b><a href="mailto:Nilachal03@gmail.com"> Nilachal sethi</a></b><br />
+        <b> <a href="callto:9658282138">Phone:9658282138</a></b><br />
+        <b> <a href="callto:7787837988">Phone:7787837988</a></b><br />
+        <p><b>Convergent Technologies</b></p>
+        <p><b>19, Jharsa Rd, HVPNL Colony, Civil Lines,</b></p>
+        <p> <b>Gurugram, Haryana 122007</b></p>
+
+    </address>
+
+
+
+</footer>
+
+

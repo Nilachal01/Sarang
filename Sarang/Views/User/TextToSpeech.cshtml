@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "TextToSpeech";
+}
+
+<h2>TextToSpeech</h2>
+@using (Html.BeginForm("TextToSpeech", "User", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <textarea placeholder="Enter your Text" name="Text"></textarea>
+            </td>
+
+        </tr>
+    </table>
+    <input type="submit" class="btn btn-success" />
+}

@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Check</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div> 
+       <a href="~/Models/">@ViewBag.data</a>
+       @using (Html.BeginForm("Login", "User"))
+       {
+           <input type="submit" formaction="Login" value="Login" class="btn btn-success" />
+           <input type="submit" formaction="Contactus" value="Registration" class="btn btn-success" />
+       }
+
+    </div>
+</body>
+</html>

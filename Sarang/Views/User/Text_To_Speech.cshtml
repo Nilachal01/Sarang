@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Text_To_Speech";
+}
+
+
+<centre >
+    <div style="height:450px;>
+
+        @using (Html.BeginForm("Text_To_Speech", "User", FormMethod.Post))
+        {
+
+            <h2 style="margin-top:60px"><b>Text_To_Speech</b></h2>
+            <table >
+                <tr>
+                    <th>Enter your string</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="Speech" class="form-control input-lg" placeholder="Enter your word" />
+                    </td>
+                </tr>
+
+            </table>
+            <br />
+            <input type="submit" class="btn btn-success" />
+
+
+        }
+    </div>
+</centre>
+
+
+

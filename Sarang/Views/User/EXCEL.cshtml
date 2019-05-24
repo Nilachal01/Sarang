@@ -1,0 +1,42 @@
+﻿
+<head>
+    <title>Score Upload</title>
+</head>
+
+<center>
+
+
+    <div style="background:linear-gradient(45deg, #008cc9,#009ea5);height:360px">
+        <div>
+            <h2 style="color:white;margin-top:30px"><b>Let’s upload your score</b></h2>
+
+        </div>
+        <br /><br />
+        <fieldset style="background-color:white;width:400px">
+            @using (Html.BeginForm("ExcelCheck", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <table>
+                    <tr>
+                        <th>Enter your Email / User ID to get started</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="email" name="EmailID" placeholder="Enter you EmailID/UserID" class="form-control" style="margin-top:30px" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="file" id="score" accept=".xls" name="score" /><a href="~/PDF-Files/GraduateTestScore.xls" title="Download xls file" style="color:red">*</a>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <input type="submit" value="Upload Score" class="btn btn-success" />
+            }
+        </fieldset>
+    </div>
+
+</center>
+

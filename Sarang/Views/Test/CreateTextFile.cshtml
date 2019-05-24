@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Create Text File";
+}
+<center>
+    <div style="background:linear-gradient(45deg, #008cc9,#009ea5);margin-top:50px">
+        @using (Html.BeginForm("CreateTextFile", "Test", FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
+        {
+            <table>
+                <tr>
+                    <td>
+                        <h2 style="color:white">Create your Text File</h2>
+                     
+                    </td>
+                </tr>
+                <tr>
+                   
+                    <td><textarea cols ="50" rows ="8" name="message" class="form-control"></textarea></td>
+                </tr>
+                <tr>
+                    
+                    <td><input id="Submit1" type="submit" value="Ctreate Text File" class="btn btn-success" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+</center>
+

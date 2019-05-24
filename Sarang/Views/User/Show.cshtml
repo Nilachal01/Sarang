@@ -1,0 +1,40 @@
+﻿<center>
+    <div style="background:linear-gradient(45deg, #008cc9,#009ea5);color:white" id="Details">
+
+        @if (ViewBag.Data != null)
+            {
+            <table border="3" cellpadding="10px" id="myTable">
+                <thead>
+                    <tr>
+                        <th>Fist Name</th>
+                        <th>Last Name</th>
+                        <th>EmailID</th>
+                        <th>DateOfBirth</th>
+                        <th>Password</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Data)
+                    {
+
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.EmailID</td>
+                            <td>@item.DateOfBirth</td>
+                            <td>@item.Password</td>
+                            <td>@Html.ActionLink("Edit", "Edit", new { id = item.ID, @style = "color:white" })</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+
+
+    </div>
+
+
+</center>
+

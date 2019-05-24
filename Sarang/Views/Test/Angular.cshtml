@@ -1,0 +1,291 @@
+﻿@{
+    ViewBag.Title = "AngularJs Example";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model Sarang.Models.angular
+<head>
+    @*<script src="~/Scripts/angular.js"></script>*@
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    @*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">*@
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+</head>
+<title>Single page Application</title>
+
+<div ng-app="mvcapp" ng-controller="DemoController" style="background-color:white">
+    <h2 style="color:white;background-color:blue;margin-top:60px;width:1130px;box-shadow: 8px 8px 5px green;text-align:center"><b>ANGULAR JS</b></h2>
+    <form name="myform" id="myform" style="margin-top:30px">
+        <table class="table">
+            <tr>
+                <td ng-hide="true">Blank Text</td>
+                <td ng-hide="true">
+                    <input type="text" name="ID" ng-model="Editdata.ID" placeholder="Name" class='form-control' ng-hide="true" required  />
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>Name :</td>
+                <td>
+                    <input type="text" name="Name" id="Name" ng-model="Editdata.Name" placeholder="Name" class='form-control'  required  />
+                    <span id="NameError"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone :</td>
+                <td>
+                    <input type="text" id="Phone" name="Phone" ng-model="Editdata.Phone" placeholder="Phone" class='form-control' required />
+                    <span id="PhoneError"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Salary :</td>
+                <td>
+                    <input type="text" name="Salary" id="Salary" ng-model="Editdata.Salary" placeholder="Salary" class='form-control' required />
+                    <span id="SalaryError"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Department :</td>
+                <td>
+                    <input type="text" id="Department" name="Department" ng-model="Editdata.Department" placeholder="Department" class='form-control' required />
+                    <span id="DepartmentError"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td>
+                    <input type="email" id="Email" name="Email" ng-model="Editdata.EmailID" class='form-control' placeholder="Email" required />
+                    <span id="EmailError"></span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Save" id="btnsave" ng-disabled="isDisabledsave" ng-click="saveCustomer()" class="btn btn-success"/>
+                    <input type="button" value="Update" id="btnupdate" ng-disabled="isDisabledupdate" ng-click="updateCustomer()" class="btn btn-success" />
+                    <input type="reset" id="reset" class="btn btn-success" ng-click="reset()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br />
+    <a href="/Test/ExportAngular" class="btn btn-success">Export to Excel</a>
+    @*<input type="button" value="Export to Excel" id="export" ng-click="exportData()" class="btn btn-success" />*@
+    <table border="1" id="tablediv">
+        <tr>
+            <td>
+                <input type="text" hidden />
+            </td>
+            <td>
+                <input type="search" ng-model="serachtxt.Name" placeholder="Search Name" class="form-control" />
+            </td>
+            <td>
+                <input type="search" ng-model="serachtxt.Phone" placeholder="Search Phone" class="form-control" />
+            </td>
+            <td>
+                <input type="search" ng-model="serachtxt.Department" placeholder="Search Department" class="form-control" />
+            </td>
+            <td>
+                <input type="search" ng-model="serachtxt.Salary" placeholder="Search Salary" class="form-control" />
+            </td>
+            <td>
+                <input type="search" ng-model="serachtxt.EmailID" placeholder="Search your EmailID" class="form-control" />
+            </td>
+            <td>
+                <input type="hidden" />
+            </td>
+        </tr>
+        <tr>
+            <th>S.No</th>
+
+            <th ng-click="orderByMe('Name')">
+                Name
+            </th>
+            <th ng-click="orderByMe('Phone')">
+                Phone
+            </th>
+            <th ng-click="orderByMe('Department')">
+                Department
+            </th>
+            <th ng-click="orderByMe('Salary')">
+                Salary
+            </th>
+            <th ng-click="orderByMe('Email')">
+                Email
+            </th>
+            <th>
+                Update
+            </th>
+        </tr>
+        <tr ng-repeat="item in employees| orderBy:myOrderBy|filter:serachtxt">
+            <td>{{item.ID}}</td>
+            <td>{{item.Name }}</td>
+            <td>{{item.Phone }}</td>
+            <td>{{item.Department}}</td>
+            <td>{{item.Salary | currency }}</td>
+            <td>{{item.EmailID||'Email doent exist'}}</td>
+            <td>
+                <a href="" ng-click="getCustomer(item.ID)" title="Edit Record">Edit</a>
+                <a href="" ng-click="deleteemp(item.EmailID)" title="Delete Record">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<style>
+    /*input[type=button][disabled=disabled] {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }*/
+
+    table tr th {
+        padding: 10px 30px;
+    }
+
+    table tr td {
+        padding: 10px 30px;
+    }
+</style>
+
+
+<script>
+    var angular = angular.module('mvcapp', []);
+
+    angular.controller('DemoController', function ($scope, $http) {
+
+        GetAllData();
+        $scope.isDisabledupdate = true;
+        //Get All Employee
+        debugger
+        function GetAllData() {
+            $http.get('/Test/GetEmployee').then(function (response) {
+                $scope.employees = response.data;
+            });
+        };
+        //Export table
+
+        $scope.exportData = function () {
+            var blob = new Blob([document.getElementById('tablediv').innerHTML], {
+                type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+            });
+            saveAs(blob, "Employeereport.xls");
+        };
+
+
+        //Insert Employee
+        $scope.saveCustomer = function () {
+
+            debugger
+            var dataToPost = $('#myform').serialize();
+            //var myJSON = JSON.stringify(dataToPost);
+            //$http.post("/Test/InsertEmployee", {Name:$('#Name').val});
+            $.ajax({
+                url: "/Test/InsertEmployee",
+                type: "POST",
+                dataType: "json",
+                data: dataToPost
+
+            })
+
+            $('#reset').click();
+            GetAllData();
+        };
+
+        $scope.orderByMe = function (x) {
+            $scope.myOrderBy = x;
+        }
+        //Delete Employee
+        $scope.deleteemp = function (Email) {
+            debugger
+            varIsConf = confirm('Want to delete ' + Email + '. Are you sure?');
+            if (varIsConf == true) {
+                $.ajax({
+                    url: "/Test/DeleteEmployee",
+                    type: "POST",
+                    dataType: "json",
+                    data: { EmailID: Email }
+
+                })
+            }
+ 
+            GetAllData();
+
+            $scope.isDisabledsave = false;
+            $scope.isDisabledupdate = true;
+            //});
+
+            //}
+        };
+
+        //Reset
+        $scope.reset = function () {
+            $scope.isDisabledsave = false;
+            $scope.isDisabledupdate = true;
+
+        }
+
+        //Get Employee by id to edit
+        $scope.getCustomer = function (ID) {
+            varIsConf = confirm('Want to Edit ID ' + ID + '. Are you sure?');
+            if (varIsConf == true) {
+                $http.get('/Test/getByid/' + ID)
+              .then(function (response) {
+                  $scope.Editdata = response.data;
+                  debugger;
+                  GetAllData();
+                  $scope.isDisabledsave = true;
+                  $scope.isDisabledupdate = false;
+              })
+            }
+
+        };
+
+        //Update Employee
+        $scope.updateCustomer = function () {
+            var dataToPost = $('#myform').serialize();
+            debugger
+            $.ajax({
+                url: "/Test/UpdateEmployee",
+                type: "POST",
+                dataType: "json",
+                data: dataToPost
+
+            })
+            $('#reset').click();
+            GetAllData();
+
+            $scope.isDisabledsave = false;
+            $scope.isDisabledupdate = true;
+
+
+        }
+
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+
+        var textBoxes = $('input[type="text"]');
+        textBoxes.focus(function () {
+            var helpDiv = $(this).attr('id') + 'Error';
+            $('#' + helpDiv).load('AngularValidation #' + helpDiv);
+        });
+
+        textBoxes.blur(function () {
+            var helpDiv = $(this).attr('id') + 'Error';
+            $('#' + helpDiv).html('');
+        });
+        var mailbox = $('input[type="email"]');
+        mailbox.focus(function () {
+            $('#EmailError').load('AngularValidation #EmailError');
+        });
+        mailbox.blur(function () {
+            $('#EmailError').html("");
+        })
+
+    });
+</script>

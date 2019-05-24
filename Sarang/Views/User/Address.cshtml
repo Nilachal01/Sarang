@@ -1,0 +1,74 @@
+﻿<html>
+<head>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div style="margin-top:60px;height:400px">
+        <center>
+            <h2 class="Address"> ADDRESS</h2>
+            @using (Html.BeginForm("Address", "User", FormMethod.Post))
+            {
+            <table>
+                <tr>
+                    <td>
+                        <textarea class="form-control input-lg" id="Presentaddress" required name="Presentaddress" maxlength="150" placeholder="Enter your present Address"></textarea>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="chekbox" />
+                    </td>
+                    <td>
+                        <textarea class="form-control input-lg" id="Permanentaddress" name="Permanentaddress" maxlength="150" placeholder="Enter your Permanent Addrerss"></textarea>
+                    </td>
+                </tr>
+            </table>
+
+            <input type="submit" class="btn btn-success" value="Submit to get alert" onclick="alertshow()" />
+            }
+            <div id="show" style="background-color:red;width:400px">
+                
+
+            </div>
+            
+        </center>
+    </div>
+
+    <script>
+        function alertshow()
+        {
+            var text;
+            if(confirm("Are you sure")==true)
+            {
+                var Address = $("#Presentaddress").val();
+                var PAddress = $("#Permanentaddress").val();
+               
+                text = "Your Present Address is  " + Address+ "<br> Your Permanent Address is  " + PAddress;
+            }
+            else
+            {
+                text = "You have cliked cancel";
+            }
+           
+            document.getElementById('show').innerHTML = text;
+
+
+        }
+    </script>
+    <script>
+        $('#chekbox').click(function () {
+
+    if ((this).checked) {
+
+        var PresentAddress = $("#Presentaddress").val();
+
+        $("#Permanentaddress").html(PresentAddress);
+        $("#Permanentaddress").prop('readonly', true);
+    }
+    else {
+
+        $("#Permanentaddress").html('');
+        $("#Permanentaddress").prop('readonly', false);
+    }
+    });
+    </script>
+</body>
+</html>

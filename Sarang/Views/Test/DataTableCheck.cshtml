@@ -1,0 +1,63 @@
+﻿<div class="grid-12 search-tbl">
+    <div class="table-data">
+        <table id="ShortlistedGrad" class="commTable" style="width:100%; background-color:white">
+
+            <thead>
+                <tr id="filterrow" class="tfoot">
+                    <th style="width:15%;">ID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>EmailID</th>
+                    <th>PermanentAddress</th>
+                    <th>CurrentAddress</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>FirstName</th>
+                    <th>EmailID</th>
+                    <th>LastName</th>
+                    <th>EmailID</th>
+                    <th>PermanentAddress</th>
+                    <th>CurrentAddress</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+
+            <tbody id="">
+                @if (ViewBag.TotalResult > 0)
+                {
+                    foreach (var item in ViewBag.TotalData)
+                    {
+                        <tr>
+                            <td style="vertical-align: top; text-align: left;">@item[0]</td>
+                            <td style="vertical-align: top; text-align: left;">@item[1]</td>
+                           <td style="vertical-align: top; text-align: left;">@item[2]</td>
+                            <td style="vertical-align: top; text-align: left;">@item[3]</td>
+                             <td style="vertical-align: top; text-align: left;">@item[4]</td>
+                            @if (item[5] is DBNull)
+                            {
+                             <td style="vertical-align: top; text-align: left;">N/A</td>
+                            }
+                            else
+                            {
+                                <td style="vertical-align: top; text-align: left;">@item[5]</td>
+                            }
+                            <td style="vertical-align: top; text-align: left;">
+                                <a href="~/Employer/Home/DownloadCV?uid=" class="view" title="Download graduate resume">Download</a>
+                                | <a href="~/Employer/Job/ViewResume/?JID=&Status=85&From=JOB&Type=REQUESTED" class="view " title="">View</a>
+                            </td>
+
+                           
+
+                        </tr>
+
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

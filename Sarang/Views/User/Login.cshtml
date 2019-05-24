@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    @*<link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="~/Models/Photo/2.jpg" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>
+
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+            .switch input {
+                display: none;
+            }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+    </style>
+
+    <title>Login</title>
+</head>
+<body style="background:url(../../Models/Photo/college4.jpg) center center fixed">
+    <div id="myDiv">
+
+        <table>
+            <tr>
+                <td>
+
+                    <div>
+                        <center>
+                            <h2 style="color:white;background-color:blue;margin-top:60px;width:600px;box-shadow: 8px 8px 5px green;"><b>Convergent Technologies</b></h2>
+
+                            <marquee style="background-color:gray; color:white;text-align:center;width:569px">Welcome to Convergent Technologies, Jharsa road, Gurgaon PIN- 751006</marquee><br />
+
+                            <span>IP Address of your Device is:@ViewBag.ipaddress</span>
+                            <div style="background-image:url(../../Models/Photo/college5.jpg);box-shadow: 20px 20px 5px black; width: 500px; height:300px;opacity:0.8;filter:alpha(opacity=80);margin-top:30px; ">
+
+                                @using (Html.BeginForm("Login", "User", FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
+                                {
+                                    <table style="color:white">
+
+                                        <tr style="height:70px">
+                                            <th>EmailID</th>
+                                            <td><input type="email" name="EmailID" id="EmailID" class="form-control" placeholder="Enter your EmailID" required /></td>
+                                        </tr>
+
+                                        <tr style="70px">
+                                            <th>Password</th>
+                                            <td><input type="password" name="Password"  id="Password" placeholder="Enter your Password" class="form-control" required />
+                                            <input type="checkbox" id="check"/></td>
+                                        </tr>
+                                    </table><br />
+                                    <div class="g-recaptcha" data-sitekey="6LdO8S4UAAAAAOqC1MNVg76TPNTH1qs6cv0ayWYl"></div>
+                                    <br />
+                                    @*<label class="switch">
+                                        <input type="checkbox"  checked>
+                                        <span class="slider round"></span>
+                                    </label>*@
+
+                                    <input type="submit" id="load_button" value="Login" class="btn btn-success" /><br />
+                                    <span style="color:red">@ViewBag.captcha</span><span style="color:red">@ViewBag.Invalid</span>
+
+                                }
+                               @Html.ActionLink("Forgot Password?", "ForgotPass", "User", new { @style = "color:white;" }) 
+                            </div>
+                        </center>
+
+
+                    </div>
+                </td>
+
+                <td style="padding-left:60px">
+                    <div style="background-color:white">
+                        <marquee direction="up" style="height:300px;width:400px">
+
+                            <ul>
+                                <li>
+                                    <a href="#">First phase of Admission hasbeen completed</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+                                <li>
+                                    <a href="#">Send Phase of Addmission will conducted on 25th april</a>
+                                </li>
+
+                            </ul>
+                        </marquee>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <script>
+        var j = jQuery.noConflict();
+        j(document).ready(function () {
+            j('#check').change(function () {
+                
+                if (j(this).prop('checked') == true) {
+                   
+                    j('#Password').attr('type', 'text');
+
+                } else {
+                    
+                    j("#Password").attr('type', 'password');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

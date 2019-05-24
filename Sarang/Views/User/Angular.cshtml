@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Angular";
+    Layout = null;
+}
+
+<h2>Angular</h2>
+<!--css-->
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<!--Script-->
+<script src="~/Scripts/angular-datatables.js"></script>
+<script src="~/Scripts/jquery.dataTables.js"></script>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/AngularController/JavaScript.js"></script>
+
+<div ng-app="MyApp" class="container">
+    <div ng-controller="UserCtr">
+        <table id="entry-grid" data-table="" dt-options="dtOption" dt-columns="dtColumns" class="table table-hover"></table>
+    </div>
+
+</div>

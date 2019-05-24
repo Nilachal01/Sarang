@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "AjChat";
+}
+
+<h2>AjChat</h2>
+<div id="message">
+    @using (Ajax.BeginForm("AjChat", new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.InsertAfter,
+        UpdateTargetId = "message"
+    }))
+
+    {
+        @Html.TextBox("msg")
+        <input type="submit" value="Send" class="btn btn-success" />
+    }
+</div>

@@ -1,0 +1,135 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <title>Welcome to Instruction page</title>
+
+}
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<center>
+    <div class="container">
+        <hr />
+        <h1 style="visibility:hidden">Hidden Content</h1>
+
+
+
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">INSTRUCTIONS FOR REGISTRATION AND LOGIN</button>
+
+        <!-- Modal -->
+        <center>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+
+
+                    <div class="modal-content" style="background-color:darkgray;">
+                        <div class="modal-header" style="background-color:skyblue">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">INSTRUCTION</h4>
+                        </div>
+                        <div class="modal-body" style="color:gray">
+                            <ol type="I" style="color:white;">
+
+                                <li>
+                                    <b>For New user click on the Registration</b>
+                                </li>
+                                <br />
+                                <li>
+                                    <b>If you already have an account than click on  login</b>
+                                </li>
+                                <br />
+                                <li>
+                                    <b>All files which wii be upload should be in .png,.jpg,.jpeg,.pdf format and file size should be less than 1 MB</b>
+                                </li>
+
+                            </ol>
+
+
+
+
+                        </div>
+                        <div class="modal-footer" style="background-color:skyblue">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </center>
+
+    </div>
+</center>
+
+<!----------------------Image Slide section------------------------>
+<!----------------------------------------------------------------->
+
+<div class="container">
+    <br /><br />
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="~/Models/Photo/3.jpeg" alt="Los Angeles" style="width:100%;height:300px;">
+                <div class="carousel-caption">
+
+                    <p><b>College Board</b></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="~/Models/Photo/pc.jpg" alt="New york" style="width:100%;height:300px;">
+                <div class="carousel-caption">
+
+                    <p><b>Knowledge Center</b></p>
+                </div>
+            </div>
+
+
+            <div class="item">
+                <img src="~/Models/Photo/machine.jpg" alt="New york" style="width:100%;height:300px;">
+                <div class="carousel-caption">
+
+                    <p><b>Workshop Room</b></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="~/Models/Photo/college4.jpg" alt="Chicago" style="width:100%;height:300px;">
+                <div class="carousel-caption">
+
+                    <p><b>College</b></p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Testing jQuery Tabs with Dynamic Contents</title>
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/accordion.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+   
+    <style>
+        
+        /*.fakewindowcontain .ui-widget-overlay {
+            position: absolute;
+        }*/
+    </style>
+    <script>
+
+        $(function () {
+            $("#tabs").tabs();
+        });
+
+        $(function () {
+            $("#accordion").accordion();
+        });
+
+    </script>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1" >Charecter 'A'</a></li>
+            <li><a href="#tabs-2">Charecter 'B'</a></li>
+            <li><a href="#tabs-3">Charecter 'C'</a></li>
+        </ul>
+        <div id="tabs-1">
+            <p>
+                <ul>
+                    <li>Apple</li>
+                    <li>Ant</li>
+                    <li>Aeroplane</li>
+                </ul>
+            <p>
+        </div>
+        <div id="tabs-2">
+            <p>
+                <ul>
+                    <li>Bat</li>
+                    <li>Ball</li>
+                    <li>Bus</li>
+                </ul>
+            </p>
+        </div>
+        <div id="tabs-3">
+            <p>
+                <ul>
+                    <li>Cat</li>
+                    <li>Cow</li>
+                    <li>Cup</li>
+                </ul>
+            <p>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div id="accordion">
+        <h3 style="border:double">Charecter 'A'</h3>
+        <div>
+            <p>
+                <ul>
+                    <li>Apple</li>
+                    <li>Ant</li>
+                    <li>Aeroplane</li>
+                </ul>
+            </p>
+        </div>
+        <h3 style="border:double">Character 'B'</h3>
+        <div>
+            <p>
+                <ul>
+                    <li>Bat</li>
+                    <li>Ball</li>
+                    <li>Bus</li>
+                </ul>
+            </p>
+        </div>
+        <h3 style="border:double">Character 'C'</h3>
+        <div>
+            <p>
+                <ul>
+                    <li>Cat</li>
+                    <li>Cow</li>
+                    <li>Cup</li>
+                </ul>
+            </p>
+        </div>
+
+    </div>
+</body>
+</html> 

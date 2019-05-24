@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<script>
+    var $js = jQuery.noConflict();
+    debugger
+    $js(document).ready(function () {
+
+        //Call EmpDetails jsonResult Method
+        $js.get("/User/GetFeedback",
+        function (data) {
+            
+            var tr;
+            var c = 0;
+        //Append each row to html table
+            for (var i = 0; i < data.length; i++) {
+                
+                @*var ID = json[i].ID;
+
+                var Edit = '@Html.ActionLink("Edit", "Edit","User",null,new { @style = "color:#000aaa;" } )';*@
+
+                ++c;
+                tr = $js('<tr/>');
+                tr.append("<td>" + c + "</td>");
+                tr.append("<td>" + data[i].ID + "</td>");
+                tr.append("<td>" + data[i].Message_Date + "</td>");
+                tr.append("<td>" + data[i].Subject + "</td>");
+                tr.append("<td>" + data[i].Message + "</td>");
+                tr.append("<td>" + data[i].EmailID + "</td>");
+                tr.append("<td>" + data[i].Name + "</td>");
+                
+                tr.append("<td><a href=/User/Edit/" + data[i].ID + ">Edit</a></td>");
+                tr.append("<td><a href=/User/Isactive0?EmailID=" + data[i].EmailID + ">Delete</a></td>");
+
+
+                $js('table').append(tr);
+
+        }
+        $js('#EmpInfo').DataTable();
+        });
+
+    });
+
+</script>
+
+<div class="form-horizontal" style="background:linear-gradient(45deg, #008cc9,#009ea5);margin-top:50px;width:1176px" id="Details">
+    <h2 style="height:30px;color:white;text-align:center"><u><b>Admin Dashboard - Message Centre</b> </u></h2>
+    <table id="EmpInfo" class="table table-bordered  table-hover" border="2">
+        <thead>
+            <tr>
+                <th>Sl no.</th>
+                <th>ID</th>
+                <th>Message_Date</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>EmailID</th>
+                <th>Name</th>
+                <th>Update</th>
+                <th>Delete</th>
+                
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div> 

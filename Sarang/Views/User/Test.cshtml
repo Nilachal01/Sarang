@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+
+<body >
+
+
+
+
+
+
+
+
+
+    <p>Click the table headers to change the sorting order:</p>
+
+    <div ng-app="myApp" ng-controller="namesCtrl" style="background-color:white">
+
+        <table border="1" width="100%">
+            <tr>
+                <th ng-click="orderByMe('FirstName')">FirstName</th>
+                <th ng-click="orderByMe('LastName')">LastName</th>
+                <th ng-click="orderByMe('DateOfBirth')">Date Of Birth</th>
+                <th ng-click="orderByMe('EmailID')">EmailID</th>
+            </tr>
+            <tr ng-repeat="item in Data | orderBy:myOrderBy">
+                <td>{{item.FirstName}}</td>
+                <td>{{item.LastName}}</td>
+                <td>{{item.DateofBirth | date: 'dd/MM/yyyy' }}</td>
+                <td>{{item.EmailID }}</td>
+            </tr>
+            
+        </table>
+
+    </div>
+
+    <script>
+        angular.module('myApp', []).controller('namesCtrl', function ($scope,$http) {
+            $http({
+                method: "GET",
+                url: "/User/DataTable"
+            }).then(function mySuccess(response) {
+                $scope.Data = response.data;
+                
+                        
+                        //var CastDate = eval(item[6].replace(/\/Date\((\d+)\)\//gi, "new Date($1)"));
+                        //var NewFormattedDate = getFormattedString(CastDate);
+            
+                  
+               
+
+            });
+            
+            $scope.orderByMe = function (x) {
+                $scope.myOrderBy = x;
+            }
+           
+    //$scope.names = [
+    //    {name:'Jani',country:'Norway'},
+    //    {name:'Carl',country:'Sweden'},
+    //    {name:'Margareth',country:'England'},
+    //    {name:'Hege',country:'Norway'},
+    //    {name:'Joe',country:'Denmark'},
+    //    {name:'Gustav',country:'Sweden'},
+    //    {name:'Birgit',country:'Denmark'},
+    //    {name:'Mary',country:'England'},
+    //    {name:'Kai',country:'Norway'}
+    //    ];
+             
+            });
+
+    </script>
+   
+
+</body>
+</html>

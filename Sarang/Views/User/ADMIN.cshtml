@@ -1,0 +1,47 @@
+﻿
+@using (Html.BeginForm("ADMIN", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+<center>
+    <h2 style="color:white;background-color:blue;margin-top:30px;width:600px;box-shadow: 8px 8px 5px green;"><b>Admin Login</b></h2>
+    
+    <marquee style="background-color:gray; color:white;text-align:center;width:569px">Welcome to Convergent Technologies, Jharsa road, Gurgaon PIN- 751006</marquee><br />
+    
+    <div style="height:400px;background:url(/Models/Photo/college5.jpg);box-shadow: 20px 20px 5px black; width: 500px; height:300px;opacity:0.8;filter:alpha(opacity=80);margin-top:30px; ">
+       
+         <table style="color:white" >
+            
+             <tr style="margin-top: 64px;">
+                
+                 <th style="padding-top:63px">
+                    UserName
+                </th>
+                
+                 <td><input type="email" name="UserName" class="form-control input-lg" placeholder="Enter your EmailID" style="margin-top: 64px;" required  /></td>
+            
+             </tr>
+            
+             <tr>
+                
+                 <th style="padding-top:28px">
+                    Password
+                </th>
+                
+                 <td>
+                    <input name="Password" type="password" class="form-control input-lg" placeholder="Enter your Password" required style="margin-top:22px" />
+                     <span style="color:red">@ViewBag.Error</span>
+                </td>
+
+            </tr>
+
+        </table>
+        
+        <br />
+
+        <input type="submit" class="btn btn-success" />
+        
+    </div>
+
+</center>
+
+}

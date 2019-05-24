@@ -1,0 +1,80 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+   
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+
+
+</head>
+<body style="background:url(../../Models/Photo/college4.jpg)center center fixed">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <img src="~/Models/Photo/2.jpg" height="50px" width="50px" />
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse">
+               
+
+                <ul class="nav navbar-nav" style="font-size:large">
+                    <li>@Html.ActionLink("INSTRUCTION", "Instruction", "User")</li>
+                    <li>@Html.ActionLink("REGISTRATION", "Index", "User")</li>
+                    <li>@Html.ActionLink("LOGIN", "Login", "User")</li>
+                    <li>@Html.ActionLink("CONTACT", "Contactus", "User")</li>
+                    <li>@Html.ActionLink("ADMIN", "ADMIN", "User")</li>
+
+
+
+
+
+                </ul>
+                @using (Html.BeginForm("Login", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="text" placeholder="Enter your Email Address" name="EmailID" id="EmailID" style="margin-top: 11px;margin-left:28px" required /> <input type="password" name="Password" placeholder="Enter youe Password" id="Password" style="margin-left:14px" required /> <input type="submit" class="btn btn-success" value="Login" style="padding:4px 12px;margin-left:10px" />
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        <hr />
+    </div>
+
+
+    <div>
+
+        <footer style="background-color:black ;width:100%;height:100%;position:static">
+
+
+          
+
+            
+
+
+            <p style="color:white;text-align:center"> &copy; @DateTime.Now.Year - Nilachal sethi &reg; All Rights reserves</p>
+
+
+
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

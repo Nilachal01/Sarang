@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Test1";
+}
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @*<link rel="stylesheet" href="/resources/demos/style.css">*@
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+</head>
+<h2>Test1</h2>
+
+<input type="text" onkeyup="check()"  id="divSearch" />
+
+<script type="text/javascript">
+
+
+    //$(function () {
+    //    $.ajax({
+    //        url: "/user/testsearch",
+    //        type: "post",
+    //        datatype: "json",
+    //        data: { 'search': $('#search').val() },
+    //        success: function (data) {
+    //            alert('data');
+    //            $("#divSearch").autocomplete({
+    //                source: data
+    //            })
+    //        }
+
+    //    });
+    //});
+
+    function check()
+    {
+       
+        $.ajax({
+            url: "/User/Testsearch",
+            type: "POST",
+            dataType: "json",
+            data: { Search: $('#divSearch').val() },
+            success: function (data) {
+                alert(data);
+                
+                $("#divSearch").autocomplete({
+                    source: data
+                });
+                
+                
+            }
+                
+        })
+    }
+
+
+
+
+    //    $("#divSearch").autocomplete({
+    //        source: data {
+                
+    //        }});
+
+    //        }
+    //    })
+    //};
+</script>

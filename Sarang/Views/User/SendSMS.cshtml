@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Send SMS";
+    var message = TempData["successful"];
+}
+<center>
+    <div style="background:linear-gradient(45deg, #008cc9,#009ea5);margin-top:50px;">
+    <h2 style="color:white">Send SMS</h2>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr><td>Enter phone No. :</td><td><input type="text" placeholder="Enter your Number" name="phone" class="form-control"></td></tr>
+            <tr><td>Message</td><td><textarea cols="50" rows="8" name="message" class="form-control"></textarea></td></tr>
+            <tr><td></td><td></td></tr>
+            <tr><td></td><td><input type="submit" value="Send Message" class="btn btn-success" /></td></tr>
+        </table>
+    }
+</div>
+</center>
+
+
+<script type="text/javascript">
+    var message = '@message';
+    if(message)
+        alert(message);
+</script>

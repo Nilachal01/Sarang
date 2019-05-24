@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "LanguageTest";
+}
+
+<h2>LanguageTest</h2>
+
+@using (Html.BeginForm("LanguageTest", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    <select name="Language">
+    @foreach (var item in ViewBag.culture)
+    {
+        <option value="@item.LCID">@item.EnglishName</option>
+    }
+
+    
+    
+</select>
+<label>Read</label><input type="checkbox" name="Read" />
+<label>Write</label><input type="checkbox" name="Write" />
+<label>Speak</label><input type="checkbox" name="Speak" />
+    <input type="submit" class="btn btn-success" />
+}

@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Show React";
+}
+<h2>Display tabular data from database using react js</h2>
+@* HTML *@
+
+<div id="greetingdiv" style="background-color:white;text-align:center">
+
+</div>
+<div id="griddata" class="container" style="background-color:white">
+
+</div>
+
+
+@* Bootstrap CSS *@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+@* Jquery *@
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+@* React Library *@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react-dom.js"></script>
+@* JSX parser library *@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+@* ReactJS components *@
+<script type="text/babel">
+    @* Here we will create 2 react component 1 for rows and another for table  *@
+    var EmployeeGridRow = React.createClass({
+    render : function(){
+    return (
+    <tr>
+        <td>{this.props.item.ID}</td>
+        <td>{this.props.item.FirstName}</td>
+        <td>{this.props.item.LastName}</td>
+        <td>{this.props.item.EmailID}</td>
+        
+        <td>{this.props.item.CurrentAddress}</td>
+    </tr>
+    );
+    }
+    });
+
+    var EmployeeGridTable = React.createClass({
+    getInitialState: function(){
+    return {
+    items:[]
+    }
+    },
+    componentDidMount:function(){
+    @* Fetch data via ajax *@
+    $.get(this.props.dataUrl, function(data){
+    if(this.isMounted()){
+    this.setState({
+    items: data
+    });
+    }
+    }.bind(this));
+    },
+    render : function(){
+    var rows = [];
+    this.state.items.forEach(function(item){
+    rows.push(
+    <EmployeeGridRow key={item.ID} item={item} />);
+    });
+    return (
+    <table className="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email ID</th>
+                
+                <th>Current Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {rows}
+        </tbody>
+    </table>);
+    }
+    });
+    ReactDOM.render(
+    <EmployeeGridTable dataUrl="/Test/getdata" />,
+    document.getElementById('griddata')
+    );
+</script>
+
+<script type="text/babel">
+    var Greeting = React.createClass({
+        render: function() {
+            return (
+              <p>{this.props.message}</p>
+            );
+        }
+    });
+
+    setInterval(function() {
+        var messages = ['Welcom Neel', 'Have a Good Day', 'Nice to see you'];
+        var randomMessage = messages[Math.floor((Math.random() * 3))];
+
+        ReactDOM.render(
+          <Greeting message={randomMessage}/>,
+        document.getElementById('greetingdiv')
+     );
+    }, 2000);
+</script>

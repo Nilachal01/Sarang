@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "AjaxChat";
+}
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<h2>AjaxChat</h2>
+
+
+@using (Html.BeginForm("StartChat", "User"))
+{
+    <input type="text" placeholder="Enter your Name" name="Name" /><br />
+    <input type="submit" class="btn btn-success"  value="Enter"/>
+}
+

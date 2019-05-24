@@ -1,0 +1,31 @@
+﻿<!Doctype html>
+<html>
+<head>
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script>
+        window.onload = function () {
+            var emailForm = document.querySelector("#email-form");
+            var usernameForm = document.querySelector("#username-form");
+            var sendForm = document.querySelector("#send-form");
+
+            var emailValue = "";
+            var usernameValue = "";
+
+            emailForm.oninput = function () {
+                emailValue = emailForm.value;
+            }
+            usernameForm.oninput = function () {
+                usernameValue = usernameForm.value;
+            }
+            sendForm.onclick = function () {
+                console.log(emailValue, usernameValue);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input placeholder="Email" id="email-form" />
+    <input placeholder="Username" id="username-form" />
+    <button id="send-form"> Send </button>
+</body>
+</html>

@@ -1,0 +1,141 @@
+﻿<title>Search Page</title>
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+</head>
+<center>
+    <div  style="height:400px;background:url(/Models/Photo/college5.jpg);box-shadow: 20px 20px 5px black; width: 500px; height:300px;opacity:0.8;filter:alpha(opacity=80);margin-top:80px; ">
+        <div >
+            <h2 style="color:white">search</h2>
+
+
+            @using (Html.BeginForm("search", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <table style="background-color:skyblue;margin-top:30px">
+                    <tr>
+                        <td><input type="search" id="search" name="search" placeholder="SEARCH HERE" class="form-control input-lg" />
+                            
+                        </td>
+                    </tr>
+
+                </table>
+                <br />
+
+                <input type="submit" formtarget="_blank" class="btn btn-success" />
+
+
+            }
+        </div>
+
+    </div>
+
+    <script>
+        var $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            $j("#search").autocomplete({
+                source: function (request, response) {
+                    $j.ajax({
+                        url: "/User/Auto",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return { value: item.FirstName };
+                            }))
+
+                        }
+                    })
+                },
+                focus: function () {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function (event, ui) {
+                var terms = split(this.value);
+                // remove the current input
+                terms.pop();
+                // add the selected item
+                terms.push(ui.item.value);
+                // add placeholder to get the comma-and-space at the end
+                terms.push("");
+                this.value = terms.join(", ");
+                return false;
+            }
+
+
+
+            });
+            $j("#search").bind("keydown", function (event) {
+                if (event.keyCode === $.ui.keyCode.TAB &&
+                $(this).data("autocomplete").menu.active) {
+                    event.preventDefault();
+                }
+            })
+            function split(val) {
+                return val.split(/,\s*/);
+            }
+            function extractLast(term) {
+                return split(term).pop();
+            }
+        })
+    </script>
+
+   
+
+</center>
+<script>
+    function CheckAuto()
+    {
+debugger
+    var $j = jQuery.noConflict();
+    
+        $j("#search1").autocomplete({
+            source: function (request, response) {
+                $j.ajax({
+                    url: "/User/Auto",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+                        response($j.map(data, function (item) {
+                            return { value: item.FirstName };
+                        }))
+
+                    }
+                })
+            },
+            focus: function () {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function (event, ui) {
+                var terms = split(this.value);
+                // remove the current input
+                terms.pop();
+                // add the selected item
+                terms.push(ui.item.value);
+                // add placeholder to get the comma-and-space at the end
+                terms.push("");
+                this.value = terms.join(", ");
+                return false;
+            }
+
+        });
+        $j("#search1").bind("keydown", function (event) {
+            if (event.keyCode === $.ui.keyCode.TAB &&
+            $(this).data("autocomplete").menu.active) {
+                event.preventDefault();
+            }
+        })
+        function split(val) {
+            return val.split(/,\s*/);
+        }
+        function extractLast(term) {
+            return split(term).pop();
+        }
+
+    }
+</script>

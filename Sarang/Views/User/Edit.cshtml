@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="~/Models/Photo/2.jpg" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>Edit</title>
+
+    <script>
+         var $j = jQuery.noConflict();
+         $j(function(){
+             $j("#datepicker").datepicker({
+                 dateFormat: 'dd-mm-yy', changeYear: true, changeMonth: true,
+                 maxDate: "+46Y",
+                 minDate: "-100Y",
+                 yearRange: "-130:-8"
+
+             });
+         });
+    </script>
+</head>
+<body style="background:url(../../Models/Photo/college4.jpg)center center fixed">
+    <div style="visibility:hidden">Hidden</div>
+    <div> 
+        <center>
+            <marquee style="background-color:gray; color:white;text-align:center;width:869px">Welcome to Convergent Technologies, Jharsa road, Gurgaon PIN- 751006</marquee><br />
+
+            <br /><br />
+
+            <div style="background-image:url(../../Models/Photo/college5.jpg);box-shadow: 20px 20px 5px black; width: 500px; height:500px;opacity:0.8;filter:alpha(opacity=80); ">
+                <br />
+                
+
+                @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <center>
+                        <table style="color:white">
+                            @foreach (var item in ViewBag.data)
+                            {
+                                <tr style="height:70px">
+                                    <th>First Name</th>
+                                    <td><input type="text" value="@item.FirstName" name="FName" id="FName" class="form-control" required placeholder="Enter your First Name" />
+                                        <input type="hidden" name="ID" value="@item.ID" />
+                                    </td>
+                                    
+                                </tr>
+
+                                <tr style="height:70px">
+                                    <th>Last Name</th>
+                                    <td><input type="text" value="@item.LastName" name="LName" id="LName" class="form-control" placeholder="Enter your Last Name" required /></td>
+                                </tr>
+
+                                <tr style="height:70px">
+                                    <th>EmailID</th>
+                                    <td><input type="email" value="@item.EmailID" name="EmailID" id="EmailID" class="form-control" placeholder="Enter your EmailID" required /></td>
+                                </tr>
+
+                                <tr style="height:70px">
+                                    <th>DOB</th>
+                                    <td><input type="text" value="@item.DateOfBirth" name="DOB" id="datepicker" class="form-control" placeholder="Enter your Date of Birth" required /></td>
+                                </tr>
+
+                                <tr style="height:70px">
+                                    <th>Password</th>
+                                    <td><input type="password" value="@item.Password" name="password" class="form-control" required placeholder="Enter your Password" /></td>
+                                </tr>
+                            }
+                        </table>
+                    </center>
+
+                    <input type="submit" name="submit" value="Update" class="btn btn-success" /><br />
+
+                }
+
+            </div>
+        </center>
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>

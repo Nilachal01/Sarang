@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Google Chart ";
+}
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        $.post('/User/Chartd/', {}, function (data) {
+            var dt = new google.visualization.DataTable();
+            dt.addColumn('string', 'StateName');
+            dt.addColumn('number', 'Male');
+            dt.addColumn('number', 'Female');
+            for (var i = 0; i < data.length; i++) {
+                dt.addRow([data[i].StateName, data[i].Male, data[i].Female]);
+            }
+            var options = {
+                title: "State wise Population",
+                is3D: true
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+            chart.draw(dt, options);
+        });
+    }
+</script>
+
+<fieldset>
+    <legend>State wise Chart</legend>
+    <div id="chart" style="height: 400px"></div>
+</fieldset>

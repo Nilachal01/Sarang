@@ -1,0 +1,15 @@
+﻿<h2>Upload Image</h2>
+
+@if (ViewBag.Error != null)
+{
+    <h4 style="color:red">@ViewBag.Error</h4>
+}
+
+
+@using (Html.BeginForm("ReduceImage", "Test", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>Upload Image</div>
+            <input type="file" name="avatar" />
+            <input type="submit" value="upload" />
+}
+   

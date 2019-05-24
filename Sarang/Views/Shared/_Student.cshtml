@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Sarang.tblStudent>
+
+<div style="background:linear-gradient(45deg, #008cc9,#009ea5);">
+    <table class="table" id="Tablediv">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalMarks)
+            </th>
+            <th>Update</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalMarks)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id },new { @style = "color:#000aaa;" }) |
+                    @Html.ActionLink("Details", "BioData", new { id = item.Id }, new { @style = "color:#000aaa;" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @style = "color:#000aaa;" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+   
+</div>

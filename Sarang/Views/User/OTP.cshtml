@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "OTP Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @*<link rel="stylesheet" href="/resources/demos/style.css">*@
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+         var $j = jQuery.noConflict();
+         $j(function(){
+        $j("#datepicker").datepicker();
+         });
+    </script>
+</head>
+
+
+
+<centre>
+    <h2>OTP</h2>
+    @using (Html.BeginForm("OTP", "User", FormMethod.Post))
+    {
+
+
+        <table>
+
+            <tr>
+                <td>
+                    <input type="text" required name="UserID" class="form-control input-lg" placeholder="Enter your UserID" />
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="email" required name="EmailID" class="form-control input-lg" placeholder="Enter Your emailID" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="text" name="datepicker" id="datepicker" />
+                </td>
+            </tr>
+
+        </table>
+        <br />
+
+        <input type="submit" value="Generate OTP" class="btn btn-success" new { id=item.ID } />
+
+    }
+</centre>
+
+<script>
+    var today = new Date();
+
+$('#StartDate').datepicker({
+            minDate: '01-01-2015',
+            maxDate: today,
+            dateFormat: 'dd-M-yy',
+            onSelect: function (dat, inst) {
+                $('#StartDate').datepicker('option', 'minDate', dat);
+            }
+        });
+</script>

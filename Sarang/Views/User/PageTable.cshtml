@@ -1,0 +1,224 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PageTable</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+</head>
+<body style="background-color:white">
+    <center>
+        
+
+        <div id="divStudent" style="background-color:white" >
+
+            <table border="5" style="text-align:center" width="800px">
+                <tr>
+                    <td><input type="hidden" class="form-control" /></td>
+                    <td><input type="search" class="form-control"  placeholder="Search FirstName" id="FirstName" /></td>
+                    <td><input type="search" class="form-control" placeholder="Search LastName" /></td>
+                    <td><input type="search" class="form-control" placeholder="Search EmailID" /></td>
+                    <td><input type="hidden" class="form-control" /></td>
+                    <td><input type="search" class="form-control"   /></td>
+                    <td><input type="search" class="form-control" placeholder="Search PermanentAddress" /></td>
+                    <td><input type="search" class="form-control" placeholder="Search CurrentAddress"  /></td>
+                    <td><input type="hidden" class="form-control" /></td>
+
+                </tr>
+                <tr >
+                    <th style="text-align:center;width:45px;" >ID</th>
+                    <th style="text-align:center">FirstName</th>
+                    <th style="text-align:center">LastName</th>
+                    <th style="text-align:center">EmailID</th>
+                    <th style="text-align:center">DateOfBirth</th>
+                    <th style="text-align:center">IsActive</th>
+                    <th style="text-align:center">PermanentAddress</th>
+                    <th style="text-align:center">CurrentAddress</th>
+                    <th style="text-align:center">Update</th>
+                </tr>
+                @if (ViewBag.data != null)
+                {
+                    foreach (var item in ViewBag.data)
+                    {
+                        <tr>
+                            <td width="10px">@item.ID</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.EmailID</td>
+                            <td>@item.DateOfBirth</td>
+                            <td>@item.IsActive</td>
+                            <td>@item.PermanentAddress</td>
+                            <td>@item.CurrentAddress</td>
+                            <td>@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @style = "color:#000aaa;" })/<a href="/User/PageTable_IsActive0?EmailID=@item.EmailID">Delete</a></td>
+                        </tr>
+
+                    }
+
+
+                }
+                else
+                {
+                    foreach (var item in ViewBag.data1)
+                    {
+                        <tr>
+                            <td width="10px">@item.ID</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.EmailID</td>
+                            <td>@item.DateOfBirth</td>
+                            <td>@item.IsActive</td>
+                            <td>@item.PermanentAddress</td>
+                            <td>@item.CurrentAddress</td>
+                        </tr>
+
+                    }
+
+                }
+
+
+            </table>
+
+
+
+        </div>
+        <br />
+        <div>
+            @using (Html.BeginForm("PageTable", "User"))
+            {
+                <input  type="hidden" value="@ViewBag.currentpage" name="currentpage" id="currentpage" />
+                <input type="hidden" value="@ViewBag.Totaldata" name="totaldata" id="totaldata" />
+            }
+
+           
+            <input type="button" id="Previous" value="Previous" class="btn btn-success" /><span>Page</span><span id="current"></span><span id="last"> of</span><span> @ViewBag.Totaldata</span>
+           @if (ViewBag.Totaldata != null)
+           {
+            for (int i = 1; i <= ViewBag.Totaldata; i++)
+            {
+                <a href="/User/PageTable?currentpage=@i"><button type="button" class="btn btn-success" style="color:green">@i</button> </a>
+            }
+           }
+           
+
+
+            <input type="button" id="Next" value="Next" class="btn btn-success"  />
+        </div>
+
+    </center>
+    
+
+    <script>
+        $(document).ready(function () {
+            var currentpage = parseInt($('#currentpage').val());
+            $('#current').html(currentpage);
+            debugger
+            var lastpage = parseInt($('#totaldata').val());
+            if (currentpage == 1)
+                $('#Previous').attr("disabled", "disabled");
+            if (currentpage == lastpage)
+                $('#Next').attr("disabled", "disabled");
+
+            $('#Previous').click(function () {
+                debugger
+                if(Calculatepage("Previous"));
+                $('form').submit();
+            });
+            $('#Next').click(function () {
+                var currentpage = parseInt($('#currentpage').val());
+                
+                if(Calculatepage("Next"));
+                $('form').submit();
+            });
+        });
+
+        function Calculatepage(movingtype)
+        {
+            var currentpage =parseInt($('#currentpage').val());
+
+            //if (currentpage == 1)
+            //{
+            //    $('#Previous').blur();
+            //}
+            if (movingtype == "Previous")
+            {
+                currentpage--;
+            }
+            else
+                if(movingtype=="Next")
+                {
+                    currentpage++;
+                }
+            $('#currentpage').val(currentpage);
+            return true;
+        }
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            var textBoxes = $('input[type="search"]');
+            textBoxes.on("change  paste", function () {
+                debugger
+                var search = $(this).val();
+
+
+                window.location.href = "/User/PageTable?search=" + search + "";
+                //$.post("/User/PageTable", { search: search });
+                //$.ajax({
+                //    type: "GET",
+                //    url: "/User/PageTable",
+                //    data: { search: search }
+                    
+
+                //});
+            })
+            
+        });
+           
+            
+    </script>
+    
+
+
+
+<center>
+    -----------------------------test-------------------------
+    <br />
+    <input type="button" id="slide">
+    <div id="slideMe" style="display:none">
+        This content will appear and disappear when the div is slid in and out.
+    </div>
+    <br />
+    <input type="button" id="helloworld">
+    <div id="hello" style="display:none">
+        hello world
+    </div>
+    <br />
+    <input type="button" id="convergent_1">
+    <div id="convergent" style="display:none">
+        Convergent technologies
+    </div>
+</center>
+    
+    <script>
+        $('#slide').click(function () {
+            $('#slideMe').slideToggle('fast');
+        });
+        $('#helloworld').click(function () {
+            $('#hello').slideToggle('fast');
+        });
+        $('#convergent_1').click(function () {
+            $('#convergent').slideToggle('fast');
+        });
+    </script>
+</body>
+</html>

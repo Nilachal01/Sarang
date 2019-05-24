@@ -1,0 +1,39 @@
+﻿
+<head>
+    <title>Forgot Password</title>
+</head>
+
+<center>
+   
+    
+    <div style="background:linear-gradient(45deg, #008cc9,#009ea5);height:360px">
+        <div >
+            <h2 style="color:white;margin-top:30px"><b>Let’s find your account</b></h2>
+            
+        </div>
+        <br /><br />
+        <fieldset style="background-color:white;width:400px">
+            @using (Html.BeginForm("ForgotPass", "User", FormMethod.Post))
+            {
+                <table>
+                    <tr>
+                        <th>Enter your Email / User ID to get started</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="email" name="EmailID" placeholder="Enter you EmailID/UserID" class="form-control" style="margin-top:30px" required />
+                        </td>
+
+                    </tr>
+                </table>
+                <br />
+                <span style="color:red">@ViewBag.Error</span>
+                <br />
+                <input type="submit" value="Reset Password" class="btn btn-success" />
+            }
+        </fieldset>
+    </div>
+
+</center>
+

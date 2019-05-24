@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "showlist";
+}
+
+<h2>showlist</h2>
+<div>
+    @using (Html.BeginForm("showlist", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" style="background:linear-gradient(45deg, #008cc9,#009ea5);color:white">
+            <hr />
+            <div class="form-group">
+                <label class="col-md-2 control-label">Select Country</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("CountryList", new SelectList(ViewBag.CountryList), new { @class = "form-control" })
+                </div>
+
+
+                <div>
+                    <select id="CountryId1" name="CountryName" class="form-control" onchange="return getstates();">
+                        <option selected>---Select Country----</option>
+
+                        @foreach (var item in ViewBag.CountryList)
+                        {
+                            <option value="@ViewBag.CountryList">@ViewBag.CountryList</option>
+                        }
+
+                    </select>
+
+                </div>
+                <input type="submit" class="btn btn-success" />
+
+
+            </div>
+           
+        </div>
+    }
+    </div>

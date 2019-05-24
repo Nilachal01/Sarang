@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TimeAgo</title>
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr>
+                <td><h2>Post your Message here</h2></td>
+            </tr>
+            <tr>
+               @using (Ajax.BeginForm("TimeAgo", "Test",FormMethod.Post, new AjaxOptions
+               {
+                   UpdateTargetId = "mydiv",
+                   InsertionMode = InsertionMode.Replace,
+
+                   
+               }))
+               {
+                  <td>
+                      <textarea rows="4" cols="50" class="form-control" placeholder="Enter your Message" name="Message"></textarea>
+                      <br />
+                      <input type="submit" class="btn btn-success" />
+                  </td> 
+
+               }
+            </tr>
+            
+        </table>
+    </div>
+
+    <div id="mydiv">
+
+    </div>
+</body>
+</html>

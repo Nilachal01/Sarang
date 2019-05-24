@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+</head>
+<body>
+    <center>
+        <div style="margin-top:50px;">
+            @if(TempData["message"]!=null)
+            {
+            
+            using (Html.BeginForm("Chat", "User"))
+            {
+                <table>
+                    <tr>
+                        <td>
+                            <textarea name="Chat" rows="10" cols="30" class="form-control input-lg"></textarea>
+                        </td>
+
+                        <td>
+                            <h1>
+                                Online Users
+                            </h1>
+                            <ul>
+                                <li><a href="#"> RAM</a></li>
+                                <li><a href="#"> HARI</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+
+                <input type="text" name="message" class="form-control input-lg" placeholder="Enter your mressage" required style="margin-left:-15px" /> <br /><input type="submit" value="Send" class="btn btn-success" />
+            }
+            }
+
+        </div>
+    </center>
+</body>
+</html>
+

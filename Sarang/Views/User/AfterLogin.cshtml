@@ -1,0 +1,315 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@{HtmlHelper.UnobtrusiveJavaScriptEnabled = true;}*@
+<!DOCTYPE html>
+
+<html >
+<head>
+    <link href="~/Content/spin.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    @*<link href="~/Content/all.css" rel="stylesheet" />*@
+    <link href="~/Content/accordion.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    @*<script src="~/Scripts/jquery-ui-1.12.1.js"></script>*@
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    @*<link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" />*@
+
+    <title>AfterLogin</title>
+
+    <style>
+        #MyDiv {
+            display: none;
+            text-align: center;
+        }
+
+        .data {
+            background-color: skyblue;
+        }
+    </style>
+    <script>
+        var $jq = $.noConflict();
+        $jq(function()
+        {
+          $jq("#accordion").accordion;
+        });
+    </script>
+   
+
+
+
+
+</head>
+<body onload="myFunction()">
+    
+    <div style="visibility:hidden;height:30px" id="hidden">
+
+    </div>
+    
+
+    <div style="display:none;background:url(../../Models/Photo/college4.jpg)center center fixed;" id="myDiv" class="animate-bottom">
+
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Logout", "User")" title="Logout">
+                                <img alt="Logout" src="@Url.Content("~/Models/Photo/Logout.jpg")" height="100" width="150" style="margin-top:30px">
+
+                            </a>
+                        </u>
+                    </td>
+                    <td style="color:white;padding-left:30px">
+                        <u>
+                            <a href="@Url.Action("BioData", "User")" title="BioData">
+                                <img alt="BioData" src="@Url.Content("~/Models/Photo/student_data.jpg")" height="100" width="150">
+
+                            </a>
+                        </u>
+                    </td>
+
+                    <td style="padding-left:25px">
+                        <h3 style="background-color:red;width:200px" title="Profile Completion" onclick="alert('Your profile completion')">
+                            <p style="margin-top:20px;width:@{@ViewBag.ProfileComplete}%; background-color:skyblue;">@{@ViewBag.ProfileComplete}%</p>
+                        </h3>
+                        
+                    </td>
+                    <td style="padding-left:50px">
+                        <u>
+                            <a href="@Url.Action("List","User")" title="BioData">
+                                <img alt="Bio Data" src="@Url.Content("~/Models/Photo/Biodata.jpg")" height="100" width="150">
+
+                            </a>
+                        </u>
+                    </td>
+
+                    <td>
+                        <u>
+                            <a href="@Url.Action("ChangePassword","User")" title="Change Password">
+                                <img alt="Change Password" src="@Url.Content("~/Models/Photo/change_pass.png")" height="100" width="150" style="margin-left:20px">
+
+                            </a>
+                        </u>
+                       
+                    </td>
+
+                    
+                    <td>
+                       
+                            <h4><span style="margin-left:26px;">@ViewBag.wish</span>&nbsp;&nbsp;<span>@ViewBag.Name</span> </h4>
+                       
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Certificate","User" )" title="Certificate">
+                                <img alt="Certificate" src="@Url.Content("~/Models/Photo/certificate.png")" height="100" width="150" style="margin-top:30px">
+
+                            </a>
+                        </u>
+                    </td>
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Bio","User" )" title="Bio">
+                                <img alt="Bio" src="@Url.Content("~/Models/Photo/garduate.png")" height="100" width="150">
+
+                            </a>
+                        </u>
+                    </td>
+
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Address","User" )" title="Update your Address">
+                                <img alt="Address" src="@Url.Content("~/Models/Photo/Address.jpg")" height="100" width="150">
+
+                            </a>
+                        </u>
+                    </td>
+
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Excel","User" )" title="Score Upload">
+                                <img alt="Score Upload" src="@Url.Content("~/Models/Photo/score.png")" height="100" width="150" >
+
+                            </a>
+                        </u>
+                    </td>
+
+                   
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Index","Test" )" title="Data Table">
+                                <img alt="DataTable" src="@Url.Content("~/Models/Photo/certificate_bg.jpg")" height="100" width="150">
+
+                            </a>
+                        </u>
+                    </td>
+                   
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Example_Ajax","User")" title="Ajax Example">
+                                <img alt="Ajax example" src="@Url.Content("~/Models/Photo/2.jpg")" height="100" width="150">
+
+                            </a>
+                        </u>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Calender","Test")" title="Events">
+                                <img alt="Ajax example" src="@Url.Content("~/Models/Photo/Event.png")" height="100" width="150" style="margin-top:36px">
+
+                            </a>
+                        </u>
+                    </td>
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Angular","Test")" title="Angular Example">
+                                <img alt="Ajax example" src="@Url.Content("~/Models/Photo/angular.png")" height="120" width="200" style="margin-top:36px">
+
+                            </a>
+                        </u>
+
+                    </td>
+                    <td>
+                        <u>
+                            <a href="@Url.Action("Feedback", "User")" title="Feedback form">
+                                <img alt="Contact" src="@Url.Content("~/Models/Photo/message.jpg")" height="120" width="148" style="margin-top:36px">
+
+                            </a>
+                        </u>
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <h5 style="background-color:white">
+                            IP Address of your Device :@ViewBag.ipaddress
+                        </h5>
+                    </td>
+                </tr>
+
+            </table>
+
+
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <center>
+            
+        <div style="height:400px;margin-top:30px;">
+
+
+            @if (ViewBag.User != null)
+            {
+
+                <table border="3" cellpadding="20px" cellspacing="20px" class="data" style="box-shadow:20px 20px 20px black;border-color:blue;height:100px;background:linear-gradient(45deg, #008cc9,#009ea5);">
+
+                    <tr>
+                        <th> Profile Picture : </th>
+                        <th>First Name :</th>
+                        <th>Lastname :</th>
+                        <th>&nbsp;&nbsp; EmailID :</th>
+                        <th> Date of Birth :</th>
+
+
+                    </tr>
+                    @foreach (var item in ViewBag.info)
+                    {
+
+
+                        <tr>
+                            <td> <img src="@item.Certificate" class="w3-circle" height="100" width="100" onerror="this.src = '/Models/Photo/NoImage.png'" style=" border:solid;" /></td>
+
+                            <td> @item.FirstName</td>
+
+
+                            <td> @item.LastName</td>
+
+
+                            <td> @item.EmailID</td>
+
+
+                            <td>@item.DateOfBirth</td>
+
+
+
+
+
+                        </tr>
+
+                    }
+                </table>
+            }
+
+
+        </div>
+            </center>
+        
+
+        <div id="accordion" style="background-color:white">
+            @foreach (var item in ViewBag.info)
+            {
+
+            <h3 style="border:double">BioData</h3>
+            <div>
+            <p>
+                <ul>
+                    <li>Name:@item.FirstName @item.LastName</li>
+                    <li>Email Address:@item.EmailID</li>
+                    <li>Date of Birth: @item.DateOfBirth</li>
+                </ul>
+            </p>
+        </div>
+            
+            <h3 style="border:double">Instruction</h3>
+                <div>
+                    <p>
+                        <ul>
+                            <li>IP Address of your Device is @ViewBag.ipaddress</li>
+                        </ul>
+                    </p>
+                </div>
+           
+
+            <h3 style="border:double">Profile Completion</h3>
+                <div>
+                    <p>
+                        <ul>
+                            <li>Profile Completed: @ViewBag.ProfileComplete %</li>
+                        </ul>
+                    </p>
+                </div>
+            
+            }
+        </div>
+        <a href="#hidden"><img src="~/Image/upside.jpg" height="34px" width="34px" /></a>
+    </div>
+
+
+    <script>
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        }
+    </script>
+
+    <div id="loader"></div>
+</body>
+</html>

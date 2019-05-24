@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PageTable</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div>
+
+        <table>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+            </tr>
+            @foreach (var item in ViewBag.data)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                </tr>
+
+            }
+
+        </table>
+
+        @using (Html.BeginForm("PageTable", "User", FormMethod.Post))
+        {
+            <input type="hidden" value="@ViewBag.currentpage" name="currentpage" id="currentpage" />
+        }
+        <input type="button" id="Previous" value="Previous" />
+        <input type="button" id="Next" value="Next" />
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#Previous').click(function () {
+                debugger
+                Calculatepage("Previous");
+                $('form').submit();
+            });
+            $('#Next').click(function () {
+                Calculatepage("Next");
+                $('form').submit();
+            });
+        });
+
+        function Calculatepage(movingtype)
+        {
+            var currentpage =parseInt($('#currentpage').val());
+
+            if (movingtype == "Previous")
+            {
+                
+                currentpage--;
+            }
+            else
+                if(movingtype=="Next")
+                {
+                    currentpage++;
+                }
+            
+            $('#currentpage').val(currentpage);
+        }
+
+
+    </script>
+</body>
+</html>
+

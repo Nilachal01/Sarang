@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Post</title>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div>
+        @using (Ajax.BeginForm("Post", "Test", new AjaxOptions
+        {
+            UpdateTargetId = "show",
+            InsertionMode = InsertionMode.Replace,
+
+
+        },new { @id = "frmID" }))
+        {
+            <input type="text" class="form-control" />
+            <input type="text" class="form-control" />
+            <input type="submit" id="btnsubmit" class="btn btn-success" />
+        }
+
+    </div>
+    <div id="show"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#btnsubmit').click(function () {
+                var data = $('#frmID').serialize();
+
+                $.ajax({
+                    type: "POST",
+                    url: "Test/Post1",
+                    data:data,
+                    Success:function(response)
+                    {
+                        alert(data);
+
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

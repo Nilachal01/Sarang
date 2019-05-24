@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Ajax";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="~/Models/Photo/2.jpg" type="image/x-icon" />
+</head>
+<body style="background:url(../../Models/Photo/college4.jpg)center center fixed">
+
+    <h1 style="color:black;text-align:center"><b>Convergent Technologies</b></h1>
+    <div>
+        <center>
+            <marquee style="background-color:gray; color:white;text-align:center;width:869px">Welcome to Convergent Technologies, Jharsa road, Gurgaon PIN- 751006</marquee><br />
+
+            <div style="background-image:url(../../Models/Photo/college5.jpg);box-shadow: 20px 20px 5px black; width: 500px; height:500px;opacity:0.8;filter:alpha(opacity=80); ">
+                <br />
+
+
+                @using (Html.BeginForm("Ajax", "User", FormMethod.Post, new { enctype = "multipart/form-data",id="MyForm" }))
+                {
+                    <center>
+                        <table style="color:white">
+                            <tr style="height:70px">
+                                <th>First Name</th>
+                                <td><input type="text" name="FName" id="FName" class="form-control" required placeholder="Enter your First Name" /></td>
+                            </tr>
+
+                            <tr style="height:70px">
+                                <th>Last Name</th>
+                                <td><input type="text" name="LName" id="LName" class="form-control" placeholder="Enter your Last Name" required /></td>
+                            </tr>
+
+                            <tr style="height:70px">
+                                <th>EmailID</th>
+                                <td><input type="email" name="EmailID" id="EmailID" class="form-control" placeholder="Enter your EmailID" required /></td>
+                            </tr>
+
+                            <tr style="height:70px">
+                                <th>DOB</th>
+                                <td><input type="date" name="DOB" id="DOB" class="form-control" placeholder="Enter your Date of Birth" required /></td>
+                            </tr>
+
+                            <tr style="height:70px">
+                                <th>Password</th>
+                                <td><input type="password" name="password" class="form-control" required placeholder="Enter your Password" /></td>
+                            </tr>
+                        </table>
+                    </center>
+
+                    <input type="submit" name="submit" value="Register" class="btn btn-success" id="btnSubmit" /><br />
+                    @Html.ActionLink("Already have an account","Login","User")
+                }
+
+            </div>
+        </center>
+
+
+    </div>
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $("#btnSubmit").click(function () {
+                
+                var data = $("#MyForm").serialize();
+
+                $.ajax({
+                    
+                    type: "POST",
+                    url: "User/Ajax",
+                    data:data
+                })
+
+
+
+            })
+        })
+    </script>
+
+
+
+</body>
+</html>
+
+

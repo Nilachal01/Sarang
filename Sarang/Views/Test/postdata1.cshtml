@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>postdata1</title>
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <div> 
+        <form name="myform" id="myform">
+            <input type="text" class="form-control" name="fname" id="fname" />
+            <input type="text" class="form-control" name="lname" id="lname"/>
+            <input type="button" onclick="postdata()" />
+        </form>
+    </div>
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+        function postdata()
+        {
+            var data = $j('#myform').serialize();
+            $j.ajax({
+                url: "/Test/postdata",
+                type: "POST",
+                dataType: "json",
+                data: data
+
+                   })
+            
+        }
+    </script>
+</body>
+</html>

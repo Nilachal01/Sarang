@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "Certificate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    
+    <script src="https://code.jquery.com/jquery-git.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+    <script type="text/javascript">
+        var $js = jQuery.noConflict();
+        $js(window).on('load', function () {
+            var doc = new jsPDF();
+            var specialElementHandlers = {
+                '#editor': function (element, renderer) {
+                    return true;
+                }
+            };
+            $js('#Cert').click(function () {
+                alert('1');
+                doc.fromHTML($js('#Certificate').html(), 25, 25, {
+                    'width': 100,
+                    'elementHandlers': specialElementHandlers
+                });
+                doc.save('Certificate.pdf');
+            });
+        });
+    </script>
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<body>
+    <div id="Certificate" >
+
+
+
+
+        @foreach (var item in ViewBag.Certificate)
+        {
+           
+
+                var path = Server.MapPath("~/Image/Photo/certificate_bg.jpg");
+                var finalpath = path.Replace("\\", "/");
+
+                <div style="background-image:url(../../Models/Photo/certificate_bg.jpg);background-size:1070px 890px; height:897px; width:1070px;margin-top:90px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" >
+                   
+                    <table>
+                        <tr>
+                            <td><img src="~/Models/Photo/BD_skills_logo.png" style="margin-left: 114px; margin-top:30px  ; height: 50px; width: 170px;" /></td>
+                            <th><img src="@item.ProfilePath" onerror="this.src='/Image/Photo/NoImage.png'" class="w3-circle" height="100" width="100" style=" border:solid;margin-top:45px;margin-left: 111px;" /></th>
+                            <td><img src="~/Models/Photo/Digital_bangladesh_logo.png" style="height: 73px;margin-top: 30px;margin-left: 229px;" /></td>
+
+                        </tr>
+                    </table>
+                        
+
+                                <h1 style="margin-left: 275px;font-family: initial;margin-top: 67px;">Certificate of Achievement</h1>
+                           
+                   
+
+                                <h3 style="margin-left: 95px;font-family: initial;margin-top:69px">
+
+                                    This is to certify that <u> <a style="color:red" href="#">@item.UserName</a></u> . has completed Top Up IT Training, in the month<br /> of &nbsp;<u> <a style="color:red" href="#">@item.month</a></u>,&nbsp;
+            conducted by Ernst & Young LLP, India under Leveraging ICT for Growth,<br /> Employment and Governance(LICT)
+                                    Project of Bangladesh Computer Council(BCC),<br/> ICT Division, People’s Republic of Bangladesh on <u><a style="color:red" href="#">@item.DOB</a></u>
+                                    under NASSCOM<br /> IT-ITES Sector Skill Council (SSC) certification. The program is certified by George<br /> Washington University, USA.
+                                </h3>
+                           
+         
+
+                        <table style="margin-left: 107px; margin-top: 80px;">
+                            <tr>
+                                <td style=" padding-left: 4px;">
+                                    <img src="~/Models/Photo/sign.png" height="70px" width="150px" />
+                                </td>
+                                <td style="padding-left: 358px;">
+                                    <img src="~/Models/Photo/Modi-sign.png" height="80px" width="100px" style="margin-left:95px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Project Director </td>
+                                <td style=" padding-left: 449px;">Executive Director</td>
+                            </tr>
+                            <tr>
+                                <td>Leveraging ICT for Gr </td>
+                                <td style="padding-left: 408px;"> Bangladesh Computer Council</td>
+                            </tr>
+                            <tr>
+                                <td>Employment and Governance</td>
+                                <td></td>
+                            </tr>
+                              <tr>
+                                  <td style="padding-top: 43px;"> Validate the Authenticity at:</td>
+                                  <td></td>
+                              </tr>
+                            <tr>
+                                <td><a href="portal.bdskills.com/certificates">portal.bdskills.com/certificates</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td> Certificate Verification No: ........................</td>
+                            </tr>
+           
+
+                    </table>
+
+    </div>
+                
+            }
+    </div>
+   
+    <div class="clearfix"></div>
+
+    <div id="editor"></div>
+    <br />
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <button id="Cert" class="btn btn-success" title="Click here to download">Download Certificate</button>
+                </td>
+                <td>
+                    <input type="image" src="~/Models/Photo/button.jpg"  onclick="Print()" alt="Print" width="48" height="48"  title="Click here to print the Certificate">
+                    <b>Print</b>
+                </td>
+                <td>
+                    @Html.ActionLink("Export_Certificate", "Export_Certificate")
+                </td>
+            </tr>
+        </table>
+            </div>
+
+    <script type="text/javascript">
+        function Print()
+        {
+            debugger
+            var oldPage = document.body.innerHTML;
+            var print = document.getElementById('Certificate').innerHTML;
+
+            document.body.innerHTML = print;
+            window.print();
+            document.body.innerHTML = oldPage;
+        }
+    </script>
+
+
+
+
+</body>
+</html>
+

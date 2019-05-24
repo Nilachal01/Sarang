@@ -1,0 +1,106 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<script>
+    var $js = jQuery.noConflict();
+
+    $js(document).ready(function () {
+        //Call EmpDetails jsonResult Method
+        $js.getJSON("Test/StudentDetail",
+        function (json) {
+            var tr;
+            var c = 0;
+            var IsActive;
+        //Append each row to html table
+            for (var i = 0; i < json.length; i++) {
+                
+                @*var ID = json[i].ID;
+               
+                var Edit = '@Html.ActionLink("Edit", "Edit","User",null,new { id=json[i].ID } )';*@
+               
+                
+                ++c;
+                tr = $js('<tr/>');
+                tr.append("<td>" + c + "</td>");
+                tr.append("<td>" + json[i].ID + "</td>");
+                tr.append("<td>" + json[i].FirstName + "</td>");
+                tr.append("<td>" + json[i].LastName + "</td>");
+                tr.append("<td>" + json[i].DateofBirth + "</td>");
+                tr.append("<td>" + json[i].EmailID + "</td>");
+                 IsActive=json[i].IsActive;
+
+                 if (IsActive==1)
+                {
+                     tr.append("<td>Active</td>");
+                 }
+                 else {
+                     tr.append("<td>InActive</td>");
+                 }
+                
+                tr.append("<td>" + json[i].CurrentAddress + "</td>");
+                tr.append("<td>" + json[i].PermanentAddress + "</td>");
+                tr.append("<td><a href=User/Edit/" + json[i].ID + ">Edit</a></td>");
+                tr.append("<td><a href=User/Isactive0?EmailID=" + json[i].EmailID+ ">Delete</a></td>");
+
+
+                $js('table').append(tr);
+
+        }
+        $js('#EmpInfo').DataTable();
+        });
+
+    });
+
+</script>
+<hr />
+
+<div class="form-horizontal" style="background:linear-gradient(45deg, #008cc9,#009ea5);margin-top:50px;width:1190px" id="Details">
+    <h2 style="height:30px;color:white;text-align:center"><u><b>BioData</b> </u></h2>
+    <table id="EmpInfo" class="table table-bordered  table-hover" border="2">
+        <thead>
+            <tr>
+                <th>SNo.</th>
+                <th>UserID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>DateOfBirth</th>
+                <th>EmailID</th>
+                <th>IsActive</th>
+                <th>CurrentAddress</th>
+                <th>PermanentAddress</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div> 
+
+<span>@TempData["Hello"]</span>
+<div>
+    <h3><b><a style="color:darkblue;background-color:white" id="myLink" title="Click to Print data" href="#" onclick="Print()">Print</a></b> &nbsp;&nbsp;/
+        <b> @Html.ActionLink("EXPORT_To_EXCEL", "EXPORT", "User",null, new { @style = "color:#000aaa; background-color:white" })</b> &nbsp;&nbsp;/
+        <b> @Html.ActionLink("Download_PDF", "pdfDownload", "User",null, new { @style = "color:#000aaa; background-color:white" })</b>
+    </h3>
+</div> 
+
+<script language="javascript" type="text/javascript">
+
+
+            function Print() {
+                var OriginalPage = document.body.innerHTML;
+
+                var divElements = document.getElementById("Details").innerHTML;
+                document.body.innerHTML = divElements;
+                window.print();
+                document.body.innerHTML = OriginalPage;
+
+
+            }
+</script>

@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "BioData";
+   
+}
+<div style="height:500px">
+    <center>
+        
+        <table border="3" style="background-color:skyblue;margin-top:60px;box-shadow:20px 20px 5px black;">
+            <tr>
+                <th>
+                    Profile Picture
+                </th>
+
+                <th>
+                    FirstName
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                    EmailID
+                </th>
+                <th>
+                    Date of Birth
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Phone Nmuber
+                </th>
+
+            </tr>
+
+
+
+
+            @foreach (var item in ViewBag.AllData)
+            {
+
+                <tr>
+                    <td>
+                        <img src="@item.Certificate"  class="w3-circle" height="100" width="100"  onerror="this.src = '/Models/Photo/NoImage.png'" style=" border:solid;" />
+
+                    </td>
+
+                    <td>
+                        @item.FirstName
+                    </td>
+                    <td>
+                        @item.LastName
+                    </td>
+                    <td>
+                        @item.EmailID
+                    </td>
+                    <td>
+                        @item.DateOfBirth
+                    </td>
+                    <td>
+                        @item.Address
+                    </td>
+                    <td>
+                        @item.PhoneNumber
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+        
+    </center>
+</div>
+
+
+
+
